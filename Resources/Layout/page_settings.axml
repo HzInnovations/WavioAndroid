@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:divider="?android:dividerHorizontal"
+    android:showDividers="middle">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        
+    </FrameLayout>
+</RelativeLayout>

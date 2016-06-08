@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+  <android.support.v7.preference.PreferenceCategory android:title="Mic Settings">
+   <android.support.v7.preference.PreferenceScreen android:key="preference_mic_button_sounds"
+                      android:title="Add or Update Sounds"
+                      android:summary="Record, edit, or delete the sounds this microphone recognizes.">
+    </android.support.v7.preference.PreferenceScreen>
+
+    <android.support.v7.preference.EditTextPreference android:key="preference_mic_text_sensitivity"
+                        android:title="Sensitivity"
+                        android:summary="Change the sound detection sensitivity."
+                        android:inputType="number" 
+                        android:dialogTitle="Please enter a number from 1 to 10."
+                        android:defaultValue="5"/>
+    
+  </android.support.v7.preference.PreferenceCategory>
+
+  
+
+
+</android.support.v7.preference.PreferenceScreen>

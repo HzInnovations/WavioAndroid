@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+  <android.support.v7.preference.PreferenceCategory android:title="Notification List">
+    <ListPreference
+                android:key="notif_layout"
+                android:title="@string/notif_layout"
+                android:summary="Cards / Columns"
+                android:entries="@array/notif_layout_types"
+                android:entryValues="@array/notif_layout_values"
+                android:dialogTitle="@string/notif_dialog_title" />
+
+    <android.support.v7.preference.CheckBoxPreference android:key="notif_time_format"
+                        android:title="Relative Time Format"
+                        android:summary="00 hours ago / 00:00 PM" />
+
+    <android.support.v7.preference.CheckBoxPreference android:key="notif_hide_icons"
+                        android:title="Hide Notification Icons"
+                        android:summary="Show only the sound name" />
+    <!--
+    <android.support.v7.preference.CheckBoxPreference android:key="notif_scrollbar_show"
+                        android:title="Show Scrollbar"
+                        android:summary="" />
+                        -->
+    
+    
+  </android.support.v7.preference.PreferenceCategory>
+
+  <android.support.v7.preference.PreferenceCategory android:title="Push Settings">  
+    <!--
+    <android.support.v7.preference.CheckBoxPreference android:key="push_icon"
+                        android:title="Show Sound Icon"
+                        android:summary="Wavio Icon / Sound Icon (when possible)" />
+    -->
+    <android.support.v7.preference.EditTextPreference android:key="notif_title"
+                        android:title="Notification Title"
+                        android:summary="The title of the notification being pushed."
+                        android:dialogTitle="Notification Title. Use #SOUND for the sound name."
+                        android:defaultValue="Sound Detected"/>
+    
+    <EditTextPreference android:key="notif_body"
+                        android:title="Notification Subtext"
+                        android:summary="The subtext of the notification being pushed."
+                        android:dialogTitle="Notification Subtext. Use #SOUND for the name of the sound detected."
+                        android:defaultValue="#SOUND"/>
+    
+  </android.support.v7.preference.PreferenceCategory>
+  
+  
+  <android.support.v7.preference.PreferenceCategory android:title="debug">
+      <android.support.v7.preference.PreferenceScreen android:key="button_clear"
+                        android:title="Clear All Preferences"
+                        android:summary="Delete local mics and notifications">
+      </android.support.v7.preference.PreferenceScreen>
+      <android.support.v7.preference.PreferenceScreen android:key="button_instance"
+                        android:title="Make New InstanceID"
+                        android:summary="Delete and create a new GCM InstanceID. May help if you're not receiving notifications after reinstalling. Also clears preferences.">
+      </android.support.v7.preference.PreferenceScreen>
+
+    <android.support.v7.preference.PreferenceScreen android:key="button_test_notif"
+                      android:title="Send Test Notification."
+                      android:summary="Request a test notification from the server. You should immediatly receive a notification.">
+    </android.support.v7.preference.PreferenceScreen>
+
+
+    <android.support.v7.preference.PreferenceScreen android:key="button_test1"
+                      android:title="Test 1"
+                      android:summary="">
+    </android.support.v7.preference.PreferenceScreen>
+    
+  <android.support.v7.preference.PreferenceScreen android:key="screen_debug"
+                     android:title="Debug"
+                     android:summary="Extra Settings"
+                     android:persistent="false">    
+  </android.support.v7.preference.PreferenceScreen>
+    
+  </android.support.v7.preference.PreferenceCategory>
+
+
+</android.support.v7.preference.PreferenceScreen>

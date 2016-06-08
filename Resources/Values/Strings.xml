@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="add_mic">Add a microphone</string>
+
+  <string name="Hello">Hello World, Click Me!</string>
+    <string name="ApplicationName">Monkey App</string>
+  <string name="drawer_open">Open</string>
+  <string name="drawer_close">Close</string>
+  <string name="menu_refresh">Refresh</string>
+
+  <string name="done">Done</string>
+  
+  <!--  Bluetooth -->
+  <string name="send">Send</string>
+  <string name="not_connected">You are not connected to a device</string>
+  <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving.</string>
+  <string name="title_connecting">connecting...</string>
+  <string name="title_connected_to">connected: </string>
+  <string name="title_not_connected">not connected</string>
+
+  <!--  DeviceListActivity -->
+  <string name="scanning">scanning for devices...</string>
+  <string name="select_device">select a device to connect</string>
+  <string name="none_paired">No devices have been paired</string>
+  <string name="none_found">No devices found</string>
+  <string name="title_paired_devices">Paired Devices</string>
+  <string name="title_other_devices">Other Available Devices</string>
+  <string name="button_scan">Scan for devices</string>
+
+  <!-- Options Menu -->
+  <string name="connect">Connect a device</string>
+  <string name="discoverable">Make discoverable</string>
+
+  <!-- Preference Screen -->
+  <string name="notif_layout">Notification list style</string>
+  <string name="notif_dialog_title">How should notifications be displayed</string>
+
+  <string-array name="notif_layout_types">
+    <item>Small cards / 1 column</item>
+    <item>Small cards / 2 columns</item>
+    <item>Large cards / 1 column</item>
+    <item>Large cards / 2 columns</item>
+  </string-array>
+  <string-array
+    name="notif_layout_values">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+  
+  <string name="monkey_ipsum">Monkeys are haplorhine (dry-nosed) primates, a paraphyletic group generally possessing tails and consisting of approximately 260 known living species. Many monkey species are tree-dwelling (arboreal), although there are species that live primarily on the ground, such as baboons. Most species are also active during the day (diurnal). Monkeys are generally considered to be intelligent, particularly Old World monkeys.</string>
+</resources>
