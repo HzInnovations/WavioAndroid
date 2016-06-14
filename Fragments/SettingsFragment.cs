@@ -149,15 +149,7 @@ namespace Wavio.Fragments
             //progress.Dispose();
             //   Acr.UserDialogs.UserDialogs.Instance.ShowSuccess();
         }
-
-        private void runTestButton1(object sender, Preference.PreferenceClickEventArgs e)
-        {
-            var prefs = PreferenceManager.SharedPreferences;
-            ISharedPreferencesEditor editor = prefs.Edit();
-                        
-            Acr.UserDialogs.UserDialogs.Instance.ShowSuccess(prefs.GetString("notif_layout",""));
-        }
-
+        
         private void makeInstance(object sender, Preference.PreferenceClickEventArgs e)
         {
             var prefs = PreferenceManager.SharedPreferences;

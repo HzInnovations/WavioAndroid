@@ -12,6 +12,7 @@ using Android.Content;
 using System;
 using Wavio.Helpers;
 using Android.Preferences;
+using Android.Support.V4.Content;
 
 //using UniversalImageLoader.Core;
 
@@ -22,6 +23,7 @@ namespace Wavio.Activities
 	{
 		DrawerLayout drawerLayout;
 		NavigationView navigationView;
+        private int currentActivity = -1;
 
 		protected override int LayoutResource {
 			get {
@@ -86,6 +88,9 @@ namespace Wavio.Activities
                 case Resource.Id.nav_feedback:
                     ListItemClicked(4);
                     break;
+                case Resource.Id.nav_help:
+                    ListItemClicked(5);
+                    break;
                 }				
 
 				drawerLayout.CloseDrawers ();                
@@ -94,7 +99,7 @@ namespace Wavio.Activities
 
 			//if first time you will want to go ahead and click first item.
 			if (savedInstanceState == null) {
-				ListItemClicked (0);
+				ListItemClicked (-1);
 			}
 		}
         
@@ -108,9 +113,12 @@ namespace Wavio.Activities
 
 
             switch (position) {
-			case 0:
-                //SupportActionBar.SetWindowTitle("Notifications");
-                fragment = new TabbedNotifsFragment ();
+            case -1:
+                fragment = new TabbedNotifsFragment();
+                break;
+            case 0:
+                    //just update the notifs instead of recreating the fragment, which sometimes causes problems.
+                    UpdateNotifs();
                 break;
 			case 1:               
                 var intent = new Intent(this, typeof(MicsActivity));
@@ -135,18 +143,32 @@ namespace Wavio.Activities
             
             if (fragment != null)
             {
-                SupportFragmentManager.BeginTransaction()
+                if (currentActivity != 0)
+                {
+                    SupportFragmentManager.BeginTransaction()
                    .Replace(Resource.Id.content_frame, fragment)
-                   .AddToBackStack(null)
                    .Commit();
+                }
+                
             }
-            
 
-		}
+            currentActivity = position;
+
+        }
+
+        private void UpdateNotifs()
+        {
+            var localBroadcast = new Intent("update_notifs");
+            LocalBroadcastManager.GetInstance(Application.Context).SendBroadcast(localBroadcast);
+        }
 
 	    private void GetFeedback()
         {
-
+            //int fragmentCount = SupportFragmentManager.Fragments.Count;
+            //var s = SupportFragmentManager.Fragments[0];
+            //var s2 = SupportFragmentManager.Fragments[0].GetType();
+            //var same = SupportFragmentManager.Fragments[0].GetType() == typeof(TabbedNotifsFragment);
+            //AndroidHUD.AndHUD.Shared.Show(this, s);
         }
 
 		public override bool OnOptionsItemSelected (IMenuItem item)

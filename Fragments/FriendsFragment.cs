@@ -29,7 +29,7 @@ namespace Wavio.Fragments
         public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
-            var view = inflater.Inflate(Resource.Layout.fragment_friends, null);
+            var view = inflater.Inflate(Resource.Layout.fragment_notif_tabs, null);
 
             
             // Create your application here

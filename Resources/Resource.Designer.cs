@@ -3204,13 +3204,13 @@ namespace Wavio
 			public const int fragment_browse = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int fragment_friends = 2130903080;
+			public const int fragment_friends_all = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int fragment_friends_all = 2130903081;
+			public const int fragment_friends_recent = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int fragment_friends_recent = 2130903082;
+			public const int fragment_notif_tabs = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
 			public const int fragment_notifs = 2130903083;

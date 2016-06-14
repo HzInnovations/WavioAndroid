@@ -31,7 +31,7 @@ namespace Wavio.Fragments
         public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
-            var view = inflater.Inflate(Resource.Layout.fragment_friends, null);
+            var view = inflater.Inflate(Resource.Layout.fragment_notif_tabs, null);
             mics = new List<string>();
 
             viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager);
@@ -83,6 +83,7 @@ namespace Wavio.Fragments
         public override void OnResume()
         {
             base.OnResume();
+            /*
 
             var prefs = Android.Preferences.PreferenceManager.GetDefaultSharedPreferences(Android.App.Application.Context);
 
@@ -96,6 +97,7 @@ namespace Wavio.Fragments
             }
 
             UpdateMics();
+            */
         }
         
 

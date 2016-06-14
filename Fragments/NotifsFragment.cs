@@ -215,6 +215,8 @@ namespace Wavio.Fragments
             MicsManager.instance.micsUpdating++;
             MicsManager.instance.updatesQueued = true;
 
+
+
             //UserDialogs.Instance.ShowLoading();
 
             var client = new RestClient(Shared.SERVERURL);
@@ -225,7 +227,12 @@ namespace Wavio.Fragments
             string gcmID = prefs.GetString("GCMID", "");
             string hwid = Android.OS.Build.Serial;
 
-            if(prefs.GetBoolean("clear_instanceid", false) == true)
+            if (prefs.GetBoolean("notif_show_update", false))
+            {
+                UserDialogs.Instance.ShowLoading();
+            }
+
+            if (prefs.GetBoolean("clear_instanceid", false) == true)
             {
                 updatingNotifs = false;
                 return;

@@ -161,6 +161,10 @@ namespace Wavio.Activities
             String gcmID = prefs.GetString("GCMID", "");
             editor.PutString("NewWavoID", WavioID);
             editor.PutString("NewWavioName", name);
+            
+            //ensure update notifs screen
+            editor.PutBoolean("settings_changed", true);
+
             editor.Apply();
             if (string.IsNullOrEmpty(gcmID))
             {                

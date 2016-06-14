@@ -202,7 +202,7 @@
     <AndroidResource Include="Resources\Layout\page_friend.axml" />
     <AndroidResource Include="Resources\Layout\page_home_view.axml" />
     <AndroidResource Include="Resources\Layout\fragment_browse.axml" />
-    <AndroidResource Include="Resources\Layout\fragment_friends.axml" />
+    <AndroidResource Include="Resources\Layout\fragment_notif_tabs.axml" />
     <AndroidResource Include="Resources\Values-v21\styles.xml" />
     <AndroidResource Include="Resources\Layout\toolbar.axml" />
     <AndroidResource Include="Resources\Values\dimens.xml" />

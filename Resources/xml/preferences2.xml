@@ -18,6 +18,10 @@
     <android.support.v7.preference.CheckBoxPreference android:key="notif_hide_icons"
                         android:title="Hide Notification Icons"
                         android:summary="Show only the sound name" />
+
+    <android.support.v7.preference.CheckBoxPreference android:key="notif_show_update"
+                        android:title="Show when updating"
+                        android:summary="Show a loading indicator when updating notifs" />
     <!--
     <android.support.v7.preference.CheckBoxPreference android:key="notif_scrollbar_show"
                         android:title="Show Scrollbar"
@@ -63,7 +67,7 @@
                       android:summary="Request a test notification from the server. You should immediatly receive a notification.">
     </android.support.v7.preference.PreferenceScreen>
 
-
+<!--
     <android.support.v7.preference.PreferenceScreen android:key="button_test1"
                       android:title="Test 1"
                       android:summary="">
@@ -74,6 +78,7 @@
                      android:summary="Extra Settings"
                      android:persistent="false">    
   </android.support.v7.preference.PreferenceScreen>
+  -->
     
   </android.support.v7.preference.PreferenceCategory>
 
