@@ -282,6 +282,7 @@ namespace Wavio.Fragments
                         //gridView.SmoothScrollToPosition(0);
                         int index = gridView.FirstVisiblePosition;
                         gridView.SmoothScrollToPosition(index);
+                        gridView.SmoothScrollToPosition(0);
                         gridView.SmoothScrollBy(1, 5);
                     }
 

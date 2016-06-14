@@ -189,7 +189,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Activities\BaseActivity.cs" />
     <Compile Include="Models\Monkey.cs" />
-    <Compile Include="Serives\BluetoothChatservice.cs" />
+    <Compile Include="Services\BluetoothChatservice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -308,7 +308,6 @@
     <AndroidResource Include="Resources\xml\preferences.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\wavio_icon.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\wavio916.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_add_box_white_24dp.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_add_box_white_24dp.png" />
@@ -344,6 +343,7 @@
     <AndroidResource Include="Resources\xml\mic_preferences.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\wavio_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,6 +14,11 @@
                         android:inputType="number" 
                         android:dialogTitle="Please enter a number from 1 to 10."
                         android:defaultValue="5"/>
+
+    <android.support.v7.preference.PreferenceScreen android:key="preference_mic_restore"
+                      android:title="Restore all nofitications"
+                      android:summary="Download this microphones previous notifications">
+    </android.support.v7.preference.PreferenceScreen>
     
   </android.support.v7.preference.PreferenceCategory>
 
