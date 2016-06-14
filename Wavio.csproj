@@ -161,6 +161,7 @@
     <Compile Include="Activities\MicsActivity.cs" />
     <Compile Include="Activities\FriendActivity.cs" />
     <Compile Include="Activities\HomeActivity.cs" />
+    <Compile Include="Activities\MicSoundsActivity.cs" />
     <Compile Include="Activities\RegistrationIntentService.cs" />
     <Compile Include="Activities\MicSettingsActivity.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />

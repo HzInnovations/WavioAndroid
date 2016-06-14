@@ -19,6 +19,11 @@
                       android:title="Restore all nofitications"
                       android:summary="Download this microphones previous notifications">
     </android.support.v7.preference.PreferenceScreen>
+
+    <android.support.v7.preference.PreferenceScreen android:key="preference_mic_delete"
+                  android:title="Delete Mic"
+                  android:summary="Remove this mic from your android and stop receiving notifications">
+    </android.support.v7.preference.PreferenceScreen>
     
   </android.support.v7.preference.PreferenceCategory>
 

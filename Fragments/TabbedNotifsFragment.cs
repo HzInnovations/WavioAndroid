@@ -83,7 +83,7 @@ namespace Wavio.Fragments
         public override void OnResume()
         {
             base.OnResume();
-            /*
+            
 
             var prefs = Android.Preferences.PreferenceManager.GetDefaultSharedPreferences(Android.App.Application.Context);
 
@@ -97,7 +97,7 @@ namespace Wavio.Fragments
             }
 
             UpdateMics();
-            */
+            
         }
         
 
