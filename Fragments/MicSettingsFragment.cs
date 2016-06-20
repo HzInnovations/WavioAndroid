@@ -20,6 +20,7 @@ using Newtonsoft.Json;
 using static Wavio.Helpers.Shared;
 using System.Net;
 using Org.Json;
+using Wavio.Activities;
 
 namespace Wavio.Fragments
 {
@@ -29,6 +30,7 @@ namespace Wavio.Fragments
 
         public string micId;
         
+        
         public MicSettingsFragment(string MicId)
         {
             micId = MicId;
@@ -37,6 +39,7 @@ namespace Wavio.Fragments
         public override void OnCreatePreferences(Bundle savedInstanceState, string rootKey)
         {
             AddPreferencesFromResource(Resource.Xml.mic_preferences);
+            
 
             //Preference
 
@@ -52,7 +55,11 @@ namespace Wavio.Fragments
 
         private void micSounds(object sender, Preference.PreferenceClickEventArgs e)
         {
-            
+            //MicSoundsActivity
+
+            var intent = new Intent(base.Context, typeof(MicSoundsActivity));
+            StartActivity(intent);
+
         }
     }
 }

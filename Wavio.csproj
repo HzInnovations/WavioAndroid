@@ -165,6 +165,7 @@
     <Compile Include="Activities\RegistrationIntentService.cs" />
     <Compile Include="Activities\MicSettingsActivity.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
+    <Compile Include="Adapters\SoundAdapter.cs" />
     <Compile Include="Adapters\MicAdapter.cs" />
     <Compile Include="Adapters\NotifAdapter.cs" />
     <Compile Include="Adapters\TabbedNotifsAdapter.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Helpers\Shared.cs" />
     <Compile Include="Helpers\SquareImageView.cs" />
     <Compile Include="Helpers\MicsManager.cs" />
+    <Compile Include="Models\MicSound.cs" />
     <Compile Include="Models\SavedMic.cs" />
     <Compile Include="Models\Notif.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -244,6 +246,8 @@
     <AndroidResource Include="Resources\Layout\item_mic.axml" />
     <AndroidResource Include="Resources\Layout\fragment_notifs.axml" />
     <AndroidResource Include="Resources\Layout\item_notif_large.axml" />
+    <AndroidResource Include="Resources\Layout\page_sounds.axml" />
+    <AndroidResource Include="Resources\Layout\item_sound.axml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml">

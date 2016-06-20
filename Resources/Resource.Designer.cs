@@ -2463,8 +2463,8 @@ namespace Wavio
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a008f
-			public const int action0 = 2131361935;
+			// aapt resource value: 0x7f0a0090
+			public const int action0 = 2131361936;
 			
 			// aapt resource value: 0x7f0a0062
 			public const int action_bar = 2131361890;
@@ -2490,8 +2490,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0063
 			public const int action_context_bar = 2131361891;
 			
-			// aapt resource value: 0x7f0a0093
-			public const int action_divider = 2131361939;
+			// aapt resource value: 0x7f0a0094
+			public const int action_divider = 2131361940;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -2523,8 +2523,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0026
 			public const int always = 2131361830;
 			
-			// aapt resource value: 0x7f0a00a4
-			public const int appbar = 2131361956;
+			// aapt resource value: 0x7f0a00a5
+			public const int appbar = 2131361957;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int auto = 2131361809;
@@ -2535,8 +2535,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0032
 			public const int bottom = 2131361842;
 			
-			// aapt resource value: 0x7f0a009f
-			public const int btn_connect = 2131361951;
+			// aapt resource value: 0x7f0a00a0
+			public const int btn_connect = 2131361952;
 			
 			// aapt resource value: 0x7f0a004c
 			public const int buttonPanel = 2131361868;
@@ -2544,11 +2544,11 @@ namespace Wavio
 			// aapt resource value: 0x7f0a007e
 			public const int button_scan = 2131361918;
 			
-			// aapt resource value: 0x7f0a00a3
-			public const int button_send = 2131361955;
+			// aapt resource value: 0x7f0a00a4
+			public const int button_send = 2131361956;
 			
-			// aapt resource value: 0x7f0a0090
-			public const int cancel_action = 2131361936;
+			// aapt resource value: 0x7f0a0091
+			public const int cancel_action = 2131361937;
 			
 			// aapt resource value: 0x7f0a0033
 			public const int center = 2131361843;
@@ -2562,8 +2562,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a005a
 			public const int checkbox = 2131361882;
 			
-			// aapt resource value: 0x7f0a0096
-			public const int chronometer = 2131361942;
+			// aapt resource value: 0x7f0a0097
+			public const int chronometer = 2131361943;
 			
 			// aapt resource value: 0x7f0a003b
 			public const int clip_horizontal = 2131361851;
@@ -2574,14 +2574,14 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0027
 			public const int collapseActionView = 2131361831;
 			
-			// aapt resource value: 0x7f0a00a5
-			public const int collapsing_toolbar = 2131361957;
+			// aapt resource value: 0x7f0a00a6
+			public const int collapsing_toolbar = 2131361958;
 			
 			// aapt resource value: 0x7f0a0052
 			public const int contentPanel = 2131361874;
 			
-			// aapt resource value: 0x7f0a00aa
-			public const int content_frame = 2131361962;
+			// aapt resource value: 0x7f0a00ab
+			public const int content_frame = 2131361963;
 			
 			// aapt resource value: 0x7f0a0058
 			public const int custom = 2131361880;
@@ -2592,8 +2592,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0012
 			public const int dark = 2131361810;
 			
-			// aapt resource value: 0x7f0a00a0
-			public const int dbg_right_text = 2131361952;
+			// aapt resource value: 0x7f0a00a1
+			public const int dbg_right_text = 2131361953;
 			
 			// aapt resource value: 0x7f0a0060
 			public const int decor_content_parent = 2131361888;
@@ -2616,29 +2616,29 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0076
 			public const int design_navigation_view = 2131361910;
 			
-			// aapt resource value: 0x7f0a00a7
-			public const int details = 2131361959;
+			// aapt resource value: 0x7f0a00a8
+			public const int details = 2131361960;
 			
 			// aapt resource value: 0x7f0a0017
 			public const int disableHome = 2131361815;
 			
-			// aapt resource value: 0x7f0a00bc
-			public const int discoverable = 2131361980;
+			// aapt resource value: 0x7f0a00be
+			public const int discoverable = 2131361982;
 			
-			// aapt resource value: 0x7f0a00a8
-			public const int drawer_layout = 2131361960;
+			// aapt resource value: 0x7f0a00a9
+			public const int drawer_layout = 2131361961;
 			
 			// aapt resource value: 0x7f0a0064
 			public const int edit_query = 2131361892;
 			
-			// aapt resource value: 0x7f0a00a2
-			public const int edit_text_out = 2131361954;
+			// aapt resource value: 0x7f0a00a3
+			public const int edit_text_out = 2131361955;
 			
 			// aapt resource value: 0x7f0a0024
 			public const int end = 2131361828;
 			
-			// aapt resource value: 0x7f0a009b
-			public const int end_padder = 2131361947;
+			// aapt resource value: 0x7f0a009c
+			public const int end_padder = 2131361948;
 			
 			// aapt resource value: 0x7f0a002b
 			public const int enterAlways = 2131361835;
@@ -2667,17 +2667,17 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0040
 			public const int @fixed = 2131361856;
 			
-			// aapt resource value: 0x7f0a00a6
-			public const int friend_image = 2131361958;
+			// aapt resource value: 0x7f0a00a7
+			public const int friend_image = 2131361959;
 			
 			// aapt resource value: 0x7f0a007f
 			public const int grid = 2131361919;
 			
-			// aapt resource value: 0x7f0a00b2
-			public const int group_main = 2131361970;
-			
 			// aapt resource value: 0x7f0a00b4
-			public const int group_settings = 2131361972;
+			public const int group_main = 2131361972;
+			
+			// aapt resource value: 0x7f0a00b6
+			public const int group_settings = 2131361974;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int home = 2131361797;
@@ -2688,8 +2688,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a004a
 			public const int icon = 2131361866;
 			
-			// aapt resource value: 0x7f0a00ad
-			public const int icon_frame = 2131361965;
+			// aapt resource value: 0x7f0a00af
+			public const int icon_frame = 2131361967;
 			
 			// aapt resource value: 0x7f0a000e
 			public const int icon_only = 2131361806;
@@ -2700,11 +2700,11 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0047
 			public const int image = 2131361863;
 			
-			// aapt resource value: 0x7f0a00a1
-			public const int @in = 2131361953;
+			// aapt resource value: 0x7f0a00a2
+			public const int @in = 2131361954;
 			
-			// aapt resource value: 0x7f0a009a
-			public const int info = 2131361946;
+			// aapt resource value: 0x7f0a009b
+			public const int info = 2131361947;
 			
 			// aapt resource value: 0x7f0a008a
 			public const int item_details = 2131361930;
@@ -2724,41 +2724,41 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0013
 			public const int light = 2131361811;
 			
-			// aapt resource value: 0x7f0a0094
-			public const int line1 = 2131361940;
+			// aapt resource value: 0x7f0a0095
+			public const int line1 = 2131361941;
 			
-			// aapt resource value: 0x7f0a0098
-			public const int line3 = 2131361944;
+			// aapt resource value: 0x7f0a0099
+			public const int line3 = 2131361945;
 			
-			// aapt resource value: 0x7f0a009e
-			public const int linearLayout1 = 2131361950;
+			// aapt resource value: 0x7f0a009f
+			public const int linearLayout1 = 2131361951;
 			
-			// aapt resource value: 0x7f0a00af
-			public const int list = 2131361967;
+			// aapt resource value: 0x7f0a00b1
+			public const int list = 2131361969;
 			
 			// aapt resource value: 0x7f0a0014
 			public const int listMode = 2131361812;
 			
-			// aapt resource value: 0x7f0a00ae
-			public const int list_container = 2131361966;
+			// aapt resource value: 0x7f0a00b0
+			public const int list_container = 2131361968;
 			
 			// aapt resource value: 0x7f0a0049
 			public const int list_item = 2131361865;
 			
-			// aapt resource value: 0x7f0a008d
-			public const int loadingImage = 2131361933;
-			
-			// aapt resource value: 0x7f0a008b
-			public const int loadingProgressBar = 2131361931;
-			
 			// aapt resource value: 0x7f0a008e
-			public const int loadingProgressWheel = 2131361934;
+			public const int loadingImage = 2131361934;
 			
-			// aapt resource value: 0x7f0a009d
-			public const int main_content = 2131361949;
+			// aapt resource value: 0x7f0a008c
+			public const int loadingProgressBar = 2131361932;
 			
-			// aapt resource value: 0x7f0a0092
-			public const int media_actions = 2131361938;
+			// aapt resource value: 0x7f0a008f
+			public const int loadingProgressWheel = 2131361935;
+			
+			// aapt resource value: 0x7f0a009e
+			public const int main_content = 2131361950;
+			
+			// aapt resource value: 0x7f0a0093
+			public const int media_actions = 2131361939;
 			
 			// aapt resource value: 0x7f0a0087
 			public const int micIdText = 2131361927;
@@ -2766,8 +2766,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0086
 			public const int micNameText = 2131361926;
 			
-			// aapt resource value: 0x7f0a00ac
-			public const int micsListView = 2131361964;
+			// aapt resource value: 0x7f0a00ad
+			public const int micsListView = 2131361965;
 			
 			// aapt resource value: 0x7f0a0025
 			public const int middle = 2131361829;
@@ -2778,26 +2778,26 @@ namespace Wavio
 			// aapt resource value: 0x7f0a001e
 			public const int multiply = 2131361822;
 			
-			// aapt resource value: 0x7f0a00b6
-			public const int nav_bt = 2131361974;
-			
-			// aapt resource value: 0x7f0a00b9
-			public const int nav_feedback = 2131361977;
-			
 			// aapt resource value: 0x7f0a00b8
-			public const int nav_help = 2131361976;
+			public const int nav_bt = 2131361976;
 			
-			// aapt resource value: 0x7f0a00b3
-			public const int nav_home = 2131361971;
+			// aapt resource value: 0x7f0a00bb
+			public const int nav_feedback = 2131361979;
+			
+			// aapt resource value: 0x7f0a00ba
+			public const int nav_help = 2131361978;
 			
 			// aapt resource value: 0x7f0a00b5
-			public const int nav_mics = 2131361973;
+			public const int nav_home = 2131361973;
 			
 			// aapt resource value: 0x7f0a00b7
-			public const int nav_settings = 2131361975;
+			public const int nav_mics = 2131361975;
 			
-			// aapt resource value: 0x7f0a00ab
-			public const int nav_view = 2131361963;
+			// aapt resource value: 0x7f0a00b9
+			public const int nav_settings = 2131361977;
+			
+			// aapt resource value: 0x7f0a00ac
+			public const int nav_view = 2131361964;
 			
 			// aapt resource value: 0x7f0a0075
 			public const int navigation_header_container = 2131361909;
@@ -2808,8 +2808,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a007d
 			public const int new_devices = 2131361917;
 			
-			// aapt resource value: 0x7f0a00b1
-			public const int new_mic = 2131361969;
+			// aapt resource value: 0x7f0a00b3
+			public const int new_mic = 2131361971;
 			
 			// aapt resource value: 0x7f0a000d
 			public const int none = 2131361805;
@@ -2820,8 +2820,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0082
 			public const int notif_grid = 2131361922;
 			
-			// aapt resource value: 0x7f0a00ba
-			public const int notif_ok = 2131361978;
+			// aapt resource value: 0x7f0a00bc
+			public const int notif_ok = 2131361980;
 			
 			// aapt resource value: 0x7f0a007b
 			public const int paired_devices = 2131361915;
@@ -2856,8 +2856,8 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0038
 			public const int right = 2131361848;
 			
-			// aapt resource value: 0x7f0a00bb
-			public const int scan = 2131361979;
+			// aapt resource value: 0x7f0a00bd
+			public const int scan = 2131361981;
 			
 			// aapt resource value: 0x7f0a001f
 			public const int screen = 2131361823;
@@ -2931,6 +2931,12 @@ namespace Wavio
 			// aapt resource value: 0x7f0a002f
 			public const int snap = 2131361839;
 			
+			// aapt resource value: 0x7f0a008b
+			public const int soundNameText = 2131361931;
+			
+			// aapt resource value: 0x7f0a00ae
+			public const int soundsListView = 2131361966;
+			
 			// aapt resource value: 0x7f0a004d
 			public const int spacer = 2131361869;
 			
@@ -2952,14 +2958,14 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0039
 			public const int start = 2131361849;
 			
-			// aapt resource value: 0x7f0a0091
-			public const int status_bar_latest_event_content = 2131361937;
+			// aapt resource value: 0x7f0a0092
+			public const int status_bar_latest_event_content = 2131361938;
 			
 			// aapt resource value: 0x7f0a006d
 			public const int submit_area = 2131361901;
 			
-			// aapt resource value: 0x7f0a00b0
-			public const int switchWidget = 2131361968;
+			// aapt resource value: 0x7f0a00b2
+			public const int switchWidget = 2131361970;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int tabMode = 2131361814;
@@ -2967,20 +2973,20 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0080
 			public const int tabs = 2131361920;
 			
-			// aapt resource value: 0x7f0a0099
-			public const int text = 2131361945;
+			// aapt resource value: 0x7f0a009a
+			public const int text = 2131361946;
 			
-			// aapt resource value: 0x7f0a0097
-			public const int text2 = 2131361943;
+			// aapt resource value: 0x7f0a0098
+			public const int text2 = 2131361944;
 			
 			// aapt resource value: 0x7f0a0055
 			public const int textSpacerNoButtons = 2131361877;
 			
-			// aapt resource value: 0x7f0a008c
-			public const int textViewStatus = 2131361932;
+			// aapt resource value: 0x7f0a008d
+			public const int textViewStatus = 2131361933;
 			
-			// aapt resource value: 0x7f0a0095
-			public const int time = 2131361941;
+			// aapt resource value: 0x7f0a0096
+			public const int time = 2131361942;
 			
 			// aapt resource value: 0x7f0a004b
 			public const int title = 2131361867;
@@ -2994,11 +3000,11 @@ namespace Wavio
 			// aapt resource value: 0x7f0a0050
 			public const int title_template = 2131361872;
 			
-			// aapt resource value: 0x7f0a009c
-			public const int toolbar = 2131361948;
+			// aapt resource value: 0x7f0a009d
+			public const int toolbar = 2131361949;
 			
-			// aapt resource value: 0x7f0a00a9
-			public const int toolbar_layout = 2131361961;
+			// aapt resource value: 0x7f0a00aa
+			public const int toolbar_layout = 2131361962;
 			
 			// aapt resource value: 0x7f0a003a
 			public const int top = 2131361850;
@@ -3234,97 +3240,103 @@ namespace Wavio
 			public const int item_notif_large = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int loading = 2130903090;
+			public const int item_sound = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int loadingimage = 2130903091;
+			public const int loading = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int loadingprogress = 2130903092;
+			public const int loadingimage = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int message = 2130903093;
+			public const int loadingprogress = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int nav_header = 2130903094;
+			public const int message = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int notification_media_action = 2130903095;
+			public const int nav_header = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int notification_media_cancel_action = 2130903096;
+			public const int notification_media_action = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int notification_template_big_media = 2130903097;
+			public const int notification_media_cancel_action = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int notification_template_big_media_narrow = 2130903098;
+			public const int notification_template_big_media = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int notification_template_lines = 2130903099;
+			public const int notification_template_big_media_narrow = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int notification_template_media = 2130903100;
+			public const int notification_template_lines = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int notification_template_part_chronometer = 2130903101;
+			public const int notification_template_media = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int notification_template_part_time = 2130903102;
+			public const int notification_template_part_chronometer = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int page_bt = 2130903103;
+			public const int notification_template_part_time = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int page_friend = 2130903104;
+			public const int page_bt = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int page_home_view = 2130903105;
+			public const int page_friend = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int page_mics = 2130903106;
+			public const int page_home_view = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int page_settings = 2130903107;
+			public const int page_mics = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int preference = 2130903108;
+			public const int page_settings = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int preference_category = 2130903109;
+			public const int page_sounds = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int preference_dialog_edittext = 2130903110;
+			public const int preference = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int preference_information = 2130903111;
+			public const int preference_category = 2130903111;
 			
 			// aapt resource value: 0x7f030048
-			public const int preference_list_fragment = 2130903112;
+			public const int preference_dialog_edittext = 2130903112;
 			
 			// aapt resource value: 0x7f030049
-			public const int preference_recyclerview = 2130903113;
+			public const int preference_information = 2130903113;
 			
 			// aapt resource value: 0x7f03004a
-			public const int preference_widget_checkbox = 2130903114;
+			public const int preference_list_fragment = 2130903114;
 			
 			// aapt resource value: 0x7f03004b
-			public const int preference_widget_switch_compat = 2130903115;
+			public const int preference_recyclerview = 2130903115;
 			
 			// aapt resource value: 0x7f03004c
-			public const int select_dialog_item_material = 2130903116;
+			public const int preference_widget_checkbox = 2130903116;
 			
 			// aapt resource value: 0x7f03004d
-			public const int select_dialog_multichoice_material = 2130903117;
+			public const int preference_widget_switch_compat = 2130903117;
 			
 			// aapt resource value: 0x7f03004e
-			public const int select_dialog_singlechoice_material = 2130903118;
+			public const int select_dialog_item_material = 2130903118;
 			
 			// aapt resource value: 0x7f03004f
-			public const int support_simple_spinner_dropdown_item = 2130903119;
+			public const int select_dialog_multichoice_material = 2130903119;
 			
 			// aapt resource value: 0x7f030050
-			public const int toolbar = 2130903120;
+			public const int select_dialog_singlechoice_material = 2130903120;
+			
+			// aapt resource value: 0x7f030051
+			public const int support_simple_spinner_dropdown_item = 2130903121;
+			
+			// aapt resource value: 0x7f030052
+			public const int toolbar = 2130903122;
 			
 			static Layout()
 			{

@@ -14,6 +14,8 @@ using Android.Support.V7.App;
 using static Wavio.Helpers.Shared;
 using Wavio.Helpers;
 using Android.Support.V4.Content;
+using Wavio.Adapters;
+using Wavio.Models;
 
 namespace Wavio.Activities
 {
@@ -23,19 +25,22 @@ namespace Wavio.Activities
     {
         Shared.BroadcastReceiver mRegistrationBroadcastReceiver;
 
+        List<MicSound> sounds;
+        ListView listView;
+
         protected override void OnCreate(Android.OS.Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.page_mics);
+            SetContentView(Resource.Layout.page_sounds);
             var toolbar = FindViewById<V7Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
             mRegistrationBroadcastReceiver = new Shared.BroadcastReceiver();
             mRegistrationBroadcastReceiver.Receive += (sender, e) =>
             {
-                //progressDialog.Dismiss();
-                var result = e.Intent.GetBooleanExtra("gcm_success", false);
+                //progressDialog.Dismiss();5
+                var result = e.Intent.GetBooleanExtra("sound_updated", false);
                 if (result)
                 {
                   
@@ -43,8 +48,17 @@ namespace Wavio.Activities
 
             };
 
+            listView = FindViewById<ListView>(Resource.Id.soundsListView);
+            listView.ItemClick += OnListItemClick;
+            listView.Adapter = new SoundAdapter(this, sounds);
+
             LocalBroadcastManager.GetInstance(this).RegisterReceiver(mRegistrationBroadcastReceiver,
               new IntentFilter("sound_updated"));
+        }
+
+        private void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
