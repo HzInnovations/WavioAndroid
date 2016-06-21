@@ -58,9 +58,6 @@ namespace Wavio.Adapters
         {
             this.notifs = Notifs;
             OrganizeNotifs();
-            NotifyDataSetChanged();
-            
-            
         }
 
        private void OrganizeNotifs()

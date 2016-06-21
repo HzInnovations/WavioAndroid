@@ -50,6 +50,12 @@
                         android:defaultValue="#SOUND"/>
     
   </android.support.v7.preference.PreferenceCategory>
+
+  <android.support.v7.preference.PreferenceCategory android:title="Misc">
+    <android.support.v7.preference.CheckBoxPreference android:key="disable_drawer_header"
+                       android:title="Disable Drawer Header"
+                       android:summary="Hide the big box at the top of the navigation menu that opens on the left of the screen. (requires restart)" />
+  </android.support.v7.preference.PreferenceCategory>
   
   
   <android.support.v7.preference.PreferenceCategory android:title="debug">

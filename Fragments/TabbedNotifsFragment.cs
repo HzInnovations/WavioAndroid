@@ -8,6 +8,7 @@ using Android.Support.Design.Widget;
 using Wavio.Helpers;
 using System.Linq;
 using System.Collections.Generic;
+using Android.Support.V7.App;
 
 namespace Wavio.Fragments
 {
@@ -19,12 +20,15 @@ namespace Wavio.Fragments
         TabLayout tabs;
 
         public int micUpdateCount = 0;
-        
+
+        AppCompatActivity home;
+
 
         private bool fetchingNotifs = false;
 
-        public TabbedNotifsFragment()
+        public TabbedNotifsFragment(AppCompatActivity Home)
         {
+            home = Home;
             RetainInstance = true;
         }
 
@@ -34,6 +38,7 @@ namespace Wavio.Fragments
             var view = inflater.Inflate(Resource.Layout.fragment_notif_tabs, null);
             mics = new List<string>();
 
+            
             viewPager = view.FindViewById<ViewPager>(Resource.Id.viewPager);
             viewPager.OffscreenPageLimit = 4;
 			tabs = view.FindViewById<TabLayout>(Resource.Id.tabs);
@@ -56,8 +61,8 @@ namespace Wavio.Fragments
             var micIds = MicsManager.GetMicsFromPreferences().Select(e => e.WavioId).ToList();
             micIds.Insert(0, "All");
 
-
-            adapter = new TabbedNotifsAdapter(ChildFragmentManager, micNames.ToArray(), micIds.ToArray());
+            
+            adapter = new TabbedNotifsAdapter(home, ChildFragmentManager, micNames.ToArray(), micIds.ToArray());
             viewPager.Adapter = adapter;
 
             tabs.SetupWithViewPager(viewPager);

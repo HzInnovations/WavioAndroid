@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Java.Lang;
 using Wavio.Models;
+using Android.Graphics.Drawables;
 
 namespace Wavio.Adapters
 {
@@ -47,11 +48,12 @@ namespace Wavio.Adapters
 
             // re-use an existing view, if one is available
             // otherwise create a new one
+
             if (view == null)
-                view = context.LayoutInflater.Inflate(Resource.Layout.item_mic, parent, false);
+                view = context.LayoutInflater.Inflate(Resource.Layout.item_sound, parent, false);
 
             MicSound item = this[position];
-            view.FindViewById<TextView>(Resource.Id.micNameText).Text = item.name;
+            view.FindViewById<TextView>(Resource.Id.soundNameText).Text = item.name;
             //view.FindViewById<TextView>(Resource.Id.micIdText).Text = item.WavioId;
 
             /*
@@ -66,6 +68,12 @@ namespace Wavio.Adapters
             */
 
             return view;
+        }
+
+        public void ClearAndAdd(List<MicSound> newSounds)
+        {
+            sounds = newSounds;            
+
         }
     }
 }

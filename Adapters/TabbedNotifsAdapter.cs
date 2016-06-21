@@ -1,7 +1,7 @@
 
 
 using Android.Support.V4.App;
-
+using Android.Support.V7.App;
 using Wavio.Fragments;
 
 namespace Wavio.Adapters
@@ -15,6 +15,7 @@ namespace Wavio.Adapters
 
         private string[] Content = new string[] {"All"};
         private string[] Ids = new string[] { "All" };
+        private AppCompatActivity home;
 
         public void SetTabs(string[] TabNames, string[] TabIds)
         {
@@ -22,11 +23,12 @@ namespace Wavio.Adapters
             Ids = TabIds;
         }
 
-        public TabbedNotifsAdapter(FragmentManager p0, string[] TabNames, string[] TabIds) 
+        public TabbedNotifsAdapter(AppCompatActivity Home, FragmentManager p0, string[] TabNames, string[] TabIds) 
                 : base(p0) 
             {
                 Content = TabNames;
             Ids = TabIds;
+            home = Home;
             }
 
             
@@ -38,8 +40,9 @@ namespace Wavio.Adapters
 
             public override Fragment GetItem(int index)
             {
-                return new NotifsFragment(Content[index], Ids[index]);
-            
+
+                return new NotifsFragment(home, Content[index], Ids[index]);
+                
             }
 
             public override Java.Lang.ICharSequence GetPageTitleFormatted(int p0) { return new Java.Lang.String(Content[p0 % Content.Length].ToUpper()); }

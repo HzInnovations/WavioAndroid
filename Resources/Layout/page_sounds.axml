@@ -23,6 +23,7 @@
             android:layout_height="match_parent"
             android:id="@+id/soundsListView"
             android:layout_gravity="bottom"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:transcriptMode="alwaysScroll" />
     </LinearLayout>
 </RelativeLayout>

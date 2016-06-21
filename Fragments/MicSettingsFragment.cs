@@ -46,6 +46,7 @@ namespace Wavio.Fragments
             var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
             ISharedPreferencesEditor editor = prefs.Edit();
             editor.PutBoolean("settings_changed", true);
+            editor.PutString("edit_mic_id", micId);
             editor.Apply();
 
             clearPreferencesButton = FindPreference("preference_mic_button_sounds") as Android.Support.V7.Preferences.PreferenceScreen;
@@ -58,6 +59,7 @@ namespace Wavio.Fragments
             //MicSoundsActivity
 
             var intent = new Intent(base.Context, typeof(MicSoundsActivity));
+            intent.PutExtra("id", micId);
             StartActivity(intent);
 
         }

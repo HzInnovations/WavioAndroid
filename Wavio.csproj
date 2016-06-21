@@ -248,6 +248,7 @@
     <AndroidResource Include="Resources\Layout\item_notif_large.axml" />
     <AndroidResource Include="Resources\Layout\page_sounds.axml" />
     <AndroidResource Include="Resources\Layout\item_sound.axml" />
+    <AndroidResource Include="Resources\Layout\page_home_noheader.axml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml">
@@ -310,9 +311,6 @@
     <AndroidResource Include="Resources\Drawable-xhdpi\ic_question_answer_black_24dp.png" />
     <AndroidResource Include="Resources\Drawable-xxhdpi\ic_question_answer_black_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_question_answer_black_24dp.png" />
-    <AndroidResource Include="Resources\xml\preferences.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxxhdpi\wavio916.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\ic_add_box_white_24dp.png" />
     <AndroidResource Include="Resources\Drawable-mdpi\ic_add_box_white_24dp.png" />

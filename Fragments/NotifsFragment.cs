@@ -17,29 +17,37 @@ using RestSharp;
 using Newtonsoft.Json;
 using Android.Support.V4.Content;
 using Android.Support.V4.View;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using Android.Graphics;
+using Android.Support.V7.App;
 
 namespace Wavio.Fragments
 {
     public class NotifsFragment : Android.Support.V4.App.Fragment
     {
         ViewGroup _container;
+        Android.OS.Bundle bundle;
 
         List<Notif> notifs;
         private string micName;
         string micId;
         GridView gridView;
         NotifAdapter adapter;
-        
+
+        private AppCompatActivity home;
+
         Shared.BroadcastReceiver mRegistrationBroadcastReceiver;
 
         private bool updatingNotifs = false;
 
-        public NotifsFragment(string MicName, string MicId)
+        public NotifsFragment(AppCompatActivity Home, string MicName, string MicId)
         {
             RetainInstance = true;
             micName = MicName;
             micId = MicId;
-
+            home = Home;
             
         }
 
@@ -48,6 +56,7 @@ namespace Wavio.Fragments
         {
 			base.OnCreateView(inflater, container, savedInstanceState);
             _container = container;
+            bundle = savedInstanceState;
 
             HasOptionsMenu = true;
 
@@ -185,6 +194,19 @@ namespace Wavio.Fragments
             NotifsManager.ClearNotifs(micId);
 
             adapter.UpdateNotifs(NotifsManager.GetSavedNotifications(micId));
+
+            adapter.NotifyDataSetChanged();
+            
+            home.RunOnUiThread(() =>
+            {
+                adapter.NotifyDataSetChanged();
+            });
+            /*
+            RunOnUiThread(() =>
+            {
+                adapter.NotifyDataSetChanged();
+            });
+            */
 
             int index = gridView.FirstVisiblePosition;
             gridView.SmoothScrollToPosition(index);

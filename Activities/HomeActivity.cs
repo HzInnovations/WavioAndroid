@@ -25,15 +25,26 @@ namespace Wavio.Activities
 		NavigationView navigationView;
         private int currentActivity = -1;
 
-		protected override int LayoutResource {
+        int viewId = Resource.Layout.page_home_view;
+
+
+        protected override int LayoutResource {
 			get {
-				return Resource.Layout.page_home_view;
+
+				return viewId;
 			}
 		}
 
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
-			base.OnCreate (savedInstanceState);
+            var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
+
+            if (prefs.GetBoolean("disable_drawer_header", false))
+            {
+                viewId = Resource.Layout.page_home_noheader;
+            }
+
+            base.OnCreate (savedInstanceState);
             var config = ImageLoaderConfiguration.CreateDefault(ApplicationContext);
             // Initialize ImageLoader with configuration.
             ImageLoader.Instance.Init(config);
@@ -41,7 +52,7 @@ namespace Wavio.Activities
             UserDialogs.Init(this);
             MicsManager.instance = new MicsManager();
 
-            var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
+            
             ISharedPreferencesEditor editor = prefs.Edit();
             if (string.IsNullOrEmpty(prefs.GetString("notif_title", "")))
             {
@@ -55,8 +66,10 @@ namespace Wavio.Activities
             }
 
             drawerLayout = FindViewById<DrawerLayout> (Resource.Id.drawer_layout);
+            
 
-			SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.ic_menu);
+
+            SupportActionBar.SetHomeAsUpIndicator (Resource.Drawable.ic_menu);
 			navigationView = FindViewById<NavigationView> (Resource.Id.nav_view);
 
             for (int i = 1; i < 6; i++)
@@ -114,7 +127,7 @@ namespace Wavio.Activities
 
             switch (position) {
             case -1:
-                fragment = new TabbedNotifsFragment();
+                fragment = new TabbedNotifsFragment(this);
                 break;
             case 0:
                     //just update the notifs instead of recreating the fragment, which sometimes causes problems.
