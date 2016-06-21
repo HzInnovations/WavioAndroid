@@ -92,6 +92,14 @@ namespace Wavio.Helpers
             public string date;
         }
 
+        public class SoundInfo
+        {
+            public string sound_name;
+            public string sound_image;
+            public string sound_id;
+            public string sound_requester;
+        }
+
         public class ServerResponse
         {
             public int request

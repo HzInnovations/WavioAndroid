@@ -55,6 +55,12 @@
     <android.support.v7.preference.CheckBoxPreference android:key="disable_drawer_header"
                        android:title="Disable Drawer Header"
                        android:summary="Hide the big box at the top of the navigation menu that opens on the left of the screen. (requires restart)" />
+    <android.support.v7.preference.EditTextPreference android:key="mic_timeout"
+                         android:title="Mic Timeout"
+                         android:summary="How long, in milliseconds, until a mic is considered offline."
+                         android:inputType="number"
+                         android:dialogTitle="Enter a new time in milliseconds. i.e. 5000 ms = 5 seconds."
+                         android:defaultValue="5000"/>
   </android.support.v7.preference.PreferenceCategory>
   
   

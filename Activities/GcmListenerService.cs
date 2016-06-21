@@ -120,10 +120,10 @@ namespace Wavio.Activities
 
                     var localBroadcast = new Intent("update_notifs");
                     LocalBroadcastManager.GetInstance(this).SendBroadcast(localBroadcast);
-                }
-                else
+                }                
+                else //handle all responses here
                 {
-                    var registrationComplete = new Intent(reply_request.ToString());
+                    var registrationComplete = new Intent("reply_error");
                     registrationComplete.PutExtra("reply_error", reply_error);
                     LocalBroadcastManager.GetInstance(this).SendBroadcast(registrationComplete);
                 }
