@@ -161,6 +161,7 @@
     <Compile Include="Activities\MicsActivity.cs" />
     <Compile Include="Activities\FriendActivity.cs" />
     <Compile Include="Activities\HomeActivity.cs" />
+    <Compile Include="Activities\SoundSettingsActivity.cs" />
     <Compile Include="Activities\MicSoundsActivity.cs" />
     <Compile Include="Activities\RegistrationIntentService.cs" />
     <Compile Include="Activities\MicSettingsActivity.cs" />
@@ -173,6 +174,7 @@
     <Compile Include="Adapters\MonkeyAdapter.cs" />
     <Compile Include="Adapters\Util.cs" />
     <Compile Include="Fragments\BrowseFragment.cs" />
+    <Compile Include="Fragments\SoundSettingsFragment.cs" />
     <Compile Include="Fragments\NotifsFragment.cs" />
     <Compile Include="Fragments\FriendsAllFragment.cs" />
     <Compile Include="Fragments\MicSettingsFragment.cs" />
@@ -347,6 +349,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxxhdpi\wavio_icon.png" />
+    <AndroidResource Include="Resources\xml\sound_preferences.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

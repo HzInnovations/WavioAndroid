@@ -57,6 +57,76 @@ namespace Wavio.Activities
             DeleteSound
         };
 
+
+        protected override void OnCreate(Android.OS.Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+
+            sounds = new List<MicSound>();
+            var tempSound1 = new MicSound();
+            tempSound1.sound_name = "...";
+            tempSound1.sound_settings = new Dictionary<string, string>();
+            //tempSound1.settings.Add("Push", true.ToString());
+            //tempSound1.settings.Add("ShowMessage", false.ToString());
+            //tempSound1.settings.Add("Vibrate", true.ToString());
+            //sounds.Add(tempSound1);
+
+            SetContentView(Resource.Layout.page_sounds);
+            var toolbar = FindViewById<V7Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            mRegistrationBroadcastReceiver = new Shared.BroadcastReceiver();
+            mRegistrationBroadcastReceiver.Receive += (sender, e) =>
+            {
+                //progressDialog.Dismiss();5
+                var result = e.Intent.GetStringExtra("reply_error");
+                if (result == Shared.ServerResponsecode.STARTED_RECORDING.ToString())
+                {
+                    if (progressDialog != null)
+                        progressDialog.Dismiss();
+                    //if (awaitingResponse == ExpectedResponse.NowRecording)
+                    {
+                        //progressDialog = Android.App.ProgressDialog.Show(this, "RECORDING...", "Play your sound...", true);
+                        Acr.UserDialogs.UserDialogs.Instance.Loading("RECORDING, Play your sound!");
+                        awaitingResponse = ExpectedResponse.DoneRecording;
+                    }
+                }
+                else if (result == Shared.ServerResponsecode.DONE_RECORDING.ToString())
+                {
+                    if (progressDialog != null)
+                        progressDialog.Dismiss();
+                    //if (awaitingResponse == ExpectedResponse.DoneRecording)
+                    {
+                        var progress = Acr.UserDialogs.UserDialogs.Instance.Progress("");
+                        progress.Hide();
+                        Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                        Acr.UserDialogs.UserDialogs.Instance.ShowSuccess("Recording complete.");
+
+                        GetSoundList();
+                    }
+                }
+
+            };
+
+            listView = FindViewById<ListView>(Resource.Id.soundsListView);
+            listView.ItemClick += OnListItemClick;
+
+            adapter = new SoundAdapter(this, sounds);
+            listView.Adapter = adapter;
+
+            LocalBroadcastManager.GetInstance(this).RegisterReceiver(mRegistrationBroadcastReceiver,
+              new IntentFilter("reply_error"));
+
+            //wavioId = savedInstanceState.GetString("id", "");
+
+            var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
+            wavioId = prefs.GetString("edit_mic_id", "");
+
+            GetSoundList();
+        }
+
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.mics_menu, menu);
@@ -104,7 +174,7 @@ namespace Wavio.Activities
             ISharedPreferencesEditor editor = prefs.Edit();
             String gcmID = prefs.GetString("GCMID", "");
 
-            var micTimeout = prefs.GetFloat("mic_timeout", 10000);
+            var micTimeout = float.Parse(prefs.GetString("mic_timeout", "10000"));
 
             try
             {
@@ -333,7 +403,12 @@ namespace Wavio.Activities
                         //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
 
                         //progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Initializing mic...", true);
-                        Acr.UserDialogs.UserDialogs.Instance.Loading("Initializing mic...", RecordCanceled);
+                        
+                        //Acr.UserDialogs.UserDialogs.Instance.Loading("Initializing mic...", RecordCanceled);
+
+                        //todo: fix
+                        Acr.UserDialogs.UserDialogs.Instance.Loading("RECORDING, Play your sound!");
+
                         awaitingResponse = ExpectedResponse.NowRecording;
 
                     }
@@ -381,91 +456,21 @@ namespace Wavio.Activities
             Acr.UserDialogs.UserDialogs.Instance.ShowError("Canceled");
         }
 
-        protected override void OnCreate(Android.OS.Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-
-            sounds = new List<MicSound>();
-            var tempSound1 = new MicSound();
-            tempSound1.sound_name = "...";
-            tempSound1.sound_settings = new Dictionary<string, string>();
-            //tempSound1.settings.Add("Push", true.ToString());
-            //tempSound1.settings.Add("ShowMessage", false.ToString());
-            //tempSound1.settings.Add("Vibrate", true.ToString());
-            //sounds.Add(tempSound1);
-
-            SetContentView(Resource.Layout.page_sounds);
-            var toolbar = FindViewById<V7Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-
-            mRegistrationBroadcastReceiver = new Shared.BroadcastReceiver();
-            mRegistrationBroadcastReceiver.Receive += (sender, e) =>
-            {
-                //progressDialog.Dismiss();5
-                var result = e.Intent.GetStringExtra("reply_error");
-                if (result == Shared.ServerResponsecode.STARTED_RECORDING.ToString())
-                {
-                    if (progressDialog != null)
-                        progressDialog.Dismiss();
-                    //if (awaitingResponse == ExpectedResponse.NowRecording)
-                    {
-                        //progressDialog = Android.App.ProgressDialog.Show(this, "RECORDING...", "Play your sound...", true);
-                        Acr.UserDialogs.UserDialogs.Instance.Loading("RECORDING, Play your sound!");
-                        awaitingResponse = ExpectedResponse.DoneRecording;
-                    }
-                }
-                else if (result == Shared.ServerResponsecode.DONE_RECORDING.ToString())
-                {
-                    if (progressDialog != null)
-                        progressDialog.Dismiss();
-                    //if (awaitingResponse == ExpectedResponse.DoneRecording)
-                    {
-                        var progress = Acr.UserDialogs.UserDialogs.Instance.Progress("");
-                        progress.Hide();
-                        Acr.UserDialogs.UserDialogs.Instance.HideLoading();
-                        Acr.UserDialogs.UserDialogs.Instance.ShowSuccess("Recording complete.");
-
-                        GetSoundList();
-                    }
-                }
-
-            };
-
-            listView = FindViewById<ListView>(Resource.Id.soundsListView);
-            listView.ItemClick += OnListItemClick;
-
-            adapter = new SoundAdapter(this, sounds);
-            listView.Adapter = adapter;
-
-            LocalBroadcastManager.GetInstance(this).RegisterReceiver(mRegistrationBroadcastReceiver,
-              new IntentFilter("reply_error"));
-
-            //wavioId = savedInstanceState.GetString("id", "");
-
-            var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
-            wavioId = prefs.GetString("edit_mic_id", "");
-
-            GetSoundList();
-        }
-
         private void OnListItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-            //throw new NotImplementedException();
+            var intent = new Intent(this, typeof(SoundSettingsActivity));
+            intent.PutExtra("mic_id", wavioId);
+            var position = e.Position;
+            var selectedSound = sounds[position];
+            intent.PutExtra("sound", JsonConvert.SerializeObject(selectedSound));
+            StartActivity(intent);
         }
 
         private void GetSoundList()
         {            
 
-            try
-            {
-                progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Downloading Sound List...", true);
-            }
-            catch
-            {
-                //Acr.UserDialogs.UserDialogs.Instance.Progress("Please wait...");
-            }
-            
+            var loading = Acr.UserDialogs.UserDialogs.Instance.Loading("Downloading Sound List...");
+
             string hwid = Android.OS.Build.Serial;
             var SharedSettings = new Dictionary<String, String>();
             var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
@@ -476,8 +481,7 @@ namespace Wavio.Activities
             {
                 if (string.IsNullOrEmpty(wavioId))
                 {
-                    if (progressDialog != null)
-                        progressDialog.Dismiss();
+                    loading.Hide();
                     Acr.UserDialogs.UserDialogs.Instance.ErrorToast("Error: Missing ID");
                     return;
                 }
@@ -504,21 +508,19 @@ namespace Wavio.Activities
                     if (serverResponse == null)
                     {
 
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
+                        loading.Hide();
                         //AndHUD.Shared.ShowError(_context, "Network error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         //Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                         return;
                     }
-
+                    
 
                     if (serverResponse.error == Shared.ServerResponsecode.OK)
                     {
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
+                        loading.Hide();
                         //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
 
-                        List<MicSound> sounds = JsonConvert.DeserializeObject<List<MicSound>>(serverResponse.data);
+                        sounds = JsonConvert.DeserializeObject<List<MicSound>>(serverResponse.data);
                         if (sounds == null)
                             sounds = new List<MicSound>();
                         UpdateList(sounds);
@@ -526,8 +528,7 @@ namespace Wavio.Activities
                     }
                     else if (serverResponse.error == Shared.ServerResponsecode.DATABASE_ERROR)
                     {
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
+                        loading.Hide();
                         //AndHUD.Shared.ShowError(_context, "Server error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Server error!");
                     }
@@ -535,14 +536,12 @@ namespace Wavio.Activities
                     {
                         if (serverResponse.request != Shared.RequestCode.GET_SOUND_LIST)
                         {
-                            if (progressDialog != null)
-                                progressDialog.Dismiss();
+                            loading.Hide();
                             //AndHUD.Shared.ShowError(_context, "Request type mismatch!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                             Acr.UserDialogs.UserDialogs.Instance.ShowError("Request type mismatch!");
                             return;
                         }
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
+                        loading.Hide();
                         //AndHUD.Shared.ShowError(_context, "Unknown error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Unknown error!");
                     }
@@ -554,8 +553,7 @@ namespace Wavio.Activities
             catch (WebException ex)
             {
                 string _exception = ex.ToString();
-                if (progressDialog != null)
-                    progressDialog.Dismiss();
+                loading.Hide();
                 //AndHUD.Shared.ShowError(_context, "Error: " + ex.ToString(), AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                 Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                 Console.WriteLine("--->" + _exception);

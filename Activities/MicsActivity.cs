@@ -193,13 +193,13 @@ namespace Wavio.Activities
         {
             try
             {
-                progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Registering mic...", true);
+                //progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Registering mic...", true);
             }
             catch
             {
                 //Acr.UserDialogs.UserDialogs.Instance.Progress("Please wait...");
             }
-            
+            var progress = Acr.UserDialogs.UserDialogs.Instance.Progress("Registering mic...");
 
             string hwid = Android.OS.Build.Serial;
 
@@ -257,6 +257,7 @@ namespace Wavio.Activities
                         return;
                     }
 
+                    progress.Hide();
 
                     if (serverResponse.error == Shared.ServerResponsecode.OK)
                     {

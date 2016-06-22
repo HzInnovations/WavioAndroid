@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+  <android.support.v7.preference.PreferenceCategory android:title="Sound Settings">
+  
+    <android.support.v7.preference.CheckBoxPreference android:key="sound_push"
+                       android:title="Notify"
+                       android:summary="Receive a notification when this sound is heard. The sound will still show up in your notification history." />
+
+    <android.support.v7.preference.CheckBoxPreference android:key="sound_vibrate"
+                       android:title="Vibrate"
+                       android:summary="Vibrate when this notification is received." />
+    
+    <android.support.v7.preference.CheckBoxPreference android:key="sound_open"
+                       android:title="Open Wavio"
+                       android:summary="Immediatly open Wavio when this notification is received." />
+    
+    <android.support.v7.preference.PreferenceScreen android:key="sound_delete"
+                      android:title="Delete"
+                      android:summary="Delete this sound from your mic.">
+    </android.support.v7.preference.PreferenceScreen>
+
+    <android.support.v7.preference.PreferenceScreen android:key="sound_icon"
+                  android:title="Change Icon"
+                  android:summary="Change the icon associated with this sound.">
+    </android.support.v7.preference.PreferenceScreen>
+    
+
+    
+  </android.support.v7.preference.PreferenceCategory>
+
+  
+
+
+</android.support.v7.preference.PreferenceScreen>
