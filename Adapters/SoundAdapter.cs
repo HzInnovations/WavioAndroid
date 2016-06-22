@@ -53,7 +53,7 @@ namespace Wavio.Adapters
                 view = context.LayoutInflater.Inflate(Resource.Layout.item_sound, parent, false);
 
             MicSound item = this[position];
-            view.FindViewById<TextView>(Resource.Id.soundNameText).Text = item.name;
+            view.FindViewById<TextView>(Resource.Id.soundNameText).Text = item.sound_name;
             //view.FindViewById<TextView>(Resource.Id.micIdText).Text = item.WavioId;
 
             /*

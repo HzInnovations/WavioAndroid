@@ -85,6 +85,7 @@ namespace Wavio.Activities
 
         private void CheckMicOnline(PostMicCheck post)
         {
+            /*
             try
             {
                 progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Checking mic status...", true);
@@ -93,6 +94,9 @@ namespace Wavio.Activities
             {
                 //Acr.UserDialogs.UserDialogs.Instance.Progress("Please wait...");
             }
+            */
+            Acr.UserDialogs.UserDialogs.Instance.Loading("Checking mic status...");
+
             string hwid = Android.OS.Build.Serial;
             
             var SharedSettings = new Dictionary<String, String>();
@@ -195,6 +199,7 @@ namespace Wavio.Activities
                         //AndHUD.Shared.ShowError(_context, "Unknown error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Unknown error!");
                     }
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
                     return;
 
                 });
@@ -248,6 +253,8 @@ namespace Wavio.Activities
 
         private void AddNewSoundRequest(string soundName)
         {
+
+            /*
             try
             {
                 base.RunOnUiThread(() =>
@@ -260,6 +267,8 @@ namespace Wavio.Activities
                 string s = e.ToString();
                 //Acr.UserDialogs.UserDialogs.Instance.Progress("Please wait...");
             }
+            */
+            Acr.UserDialogs.UserDialogs.Instance.Loading("Sending request...");
 
             string hwid = Android.OS.Build.Serial;
             var SharedSettings = new Dictionary<String, String>();
@@ -267,9 +276,13 @@ namespace Wavio.Activities
             ISharedPreferencesEditor editor = prefs.Edit();
             String gcmID = prefs.GetString("GCMID", "");
 
-            var newSound = new SoundInfo();
+            var newSound = new MicSound();
             newSound.sound_name = soundName;
             newSound.sound_image = "http://jmprog.com/hzinnovations/icons/pulse2.png";
+            newSound.sound_settings = new Dictionary<string, string>();
+            newSound.sound_settings.Add("Push", true.ToString());
+            newSound.sound_settings.Add("ShowMessage", false.ToString());
+            newSound.sound_settings.Add("Vibrate", true.ToString());
 
             try
             {
@@ -319,7 +332,8 @@ namespace Wavio.Activities
                             progressDialog.Dismiss();
                         //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
 
-                        progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Initializing mic...", true);
+                        //progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Initializing mic...", true);
+                        Acr.UserDialogs.UserDialogs.Instance.Loading("Initializing mic...", RecordCanceled);
                         awaitingResponse = ExpectedResponse.NowRecording;
 
                     }
@@ -361,14 +375,24 @@ namespace Wavio.Activities
             }
         }
 
+        private void RecordCanceled()
+        {
+            awaitingResponse = ExpectedResponse.None;
+            Acr.UserDialogs.UserDialogs.Instance.ShowError("Canceled");
+        }
+
         protected override void OnCreate(Android.OS.Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             sounds = new List<MicSound>();
             var tempSound1 = new MicSound();
-            tempSound1.name = "...";
-            sounds.Add(tempSound1);
+            tempSound1.sound_name = "...";
+            tempSound1.sound_settings = new Dictionary<string, string>();
+            //tempSound1.settings.Add("Push", true.ToString());
+            //tempSound1.settings.Add("ShowMessage", false.ToString());
+            //tempSound1.settings.Add("Vibrate", true.ToString());
+            //sounds.Add(tempSound1);
 
             SetContentView(Resource.Layout.page_sounds);
             var toolbar = FindViewById<V7Toolbar>(Resource.Id.toolbar);
@@ -384,9 +408,10 @@ namespace Wavio.Activities
                 {
                     if (progressDialog != null)
                         progressDialog.Dismiss();
-                    if (awaitingResponse == ExpectedResponse.NowRecording)
+                    //if (awaitingResponse == ExpectedResponse.NowRecording)
                     {
-                        progressDialog = Android.App.ProgressDialog.Show(this, "RECORDING...", "Play your sound...", true);
+                        //progressDialog = Android.App.ProgressDialog.Show(this, "RECORDING...", "Play your sound...", true);
+                        Acr.UserDialogs.UserDialogs.Instance.Loading("RECORDING, Play your sound!");
                         awaitingResponse = ExpectedResponse.DoneRecording;
                     }
                 }
@@ -394,9 +419,14 @@ namespace Wavio.Activities
                 {
                     if (progressDialog != null)
                         progressDialog.Dismiss();
-                    if (awaitingResponse == ExpectedResponse.DoneRecording)
+                    //if (awaitingResponse == ExpectedResponse.DoneRecording)
                     {
+                        var progress = Acr.UserDialogs.UserDialogs.Instance.Progress("");
+                        progress.Hide();
+                        Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                        Acr.UserDialogs.UserDialogs.Instance.ShowSuccess("Recording complete.");
 
+                        GetSoundList();
                     }
                 }
 
@@ -488,7 +518,9 @@ namespace Wavio.Activities
                             progressDialog.Dismiss();
                         //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
 
-                        var sounds = JsonConvert.DeserializeObject<List<MicSound>>(serverResponse.data);
+                        List<MicSound> sounds = JsonConvert.DeserializeObject<List<MicSound>>(serverResponse.data);
+                        if (sounds == null)
+                            sounds = new List<MicSound>();
                         UpdateList(sounds);
 
                     }

@@ -14,38 +14,28 @@ namespace Wavio.Models
 {
     public class MicSound
     {
-        public string type
+        
+        public string sound_name
         {
             get;
             set;
         }
-
-        public string image
+        public string sound_image
         {
             get;
             set;
         }
-        public string name
+        public string sound_id
         {
             get;
             set;
         }
-        public string imageUrl
+        public string sound_requester
         {
             get;
             set;
         }
-        public string id
-        {
-            get;
-            set;
-        }
-        public string requester
-        {
-            get;
-            set;
-        }
-        public Dictionary<String, String> settings;
+        public Dictionary<String, String> sound_settings;
     }
 
 
