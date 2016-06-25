@@ -185,6 +185,7 @@
     <Compile Include="Fragments\ProfileFragment.cs" />
     <Compile Include="Helpers\NotifsManager.cs" />
     <Compile Include="Helpers\Shared.cs" />
+    <Compile Include="Helpers\SoundsManager.cs" />
     <Compile Include="Helpers\SquareImageView.cs" />
     <Compile Include="Helpers\MicsManager.cs" />
     <Compile Include="Models\MicSound.cs" />

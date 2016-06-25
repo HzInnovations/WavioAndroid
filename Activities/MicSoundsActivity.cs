@@ -65,7 +65,7 @@ namespace Wavio.Activities
             sounds = new List<MicSound>();
             var tempSound1 = new MicSound();
             tempSound1.sound_name = "...";
-            tempSound1.sound_settings = new Dictionary<string, string>();
+            tempSound1.sound_settings = SoundsManager.NewSoundSettings();
             //tempSound1.settings.Add("Push", true.ToString());
             //tempSound1.settings.Add("ShowMessage", false.ToString());
             //tempSound1.settings.Add("Vibrate", true.ToString());
@@ -210,7 +210,6 @@ namespace Wavio.Activities
                     {
                         if (progressDialog != null)
                             progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Network error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                         return;
                     }
@@ -219,8 +218,7 @@ namespace Wavio.Activities
                     if (serverResponse.error == Shared.ServerResponsecode.OK)
                     {
                         if (progressDialog != null)
-                            progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
+                            progressDialog.Dismiss();                    
 
                         double nowInMs = DateTime.Now.ToUniversalTime().Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
                         double micTime = double.Parse(serverResponse.data);
@@ -251,7 +249,6 @@ namespace Wavio.Activities
                     {
                         if (progressDialog != null)
                             progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Server error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Server error!");
                     }
                     else
@@ -260,13 +257,11 @@ namespace Wavio.Activities
                         {
                             if (progressDialog != null)
                                 progressDialog.Dismiss();
-                            //AndHUD.Shared.ShowError(_context, "Request type mismatch!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                             Acr.UserDialogs.UserDialogs.Instance.ShowError("Request type mismatch!");
                             return;
                         }
                         if (progressDialog != null)
                             progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Unknown error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Unknown error!");
                     }
                     Acr.UserDialogs.UserDialogs.Instance.HideLoading();
@@ -280,7 +275,6 @@ namespace Wavio.Activities
                 string _exception = ex.ToString();
                 if (progressDialog != null)
                     progressDialog.Dismiss();
-                //AndHUD.Shared.ShowError(_context, "Error: " + ex.ToString(), AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                 Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                 Console.WriteLine("--->" + _exception);
             }
@@ -291,7 +285,6 @@ namespace Wavio.Activities
             var newMicIdDialog = new PromptConfig();
             newMicIdDialog.SetInputMode(InputType.Default);
             newMicIdDialog.Title = "Record a new sound";
-            //newMicIdDialog.Message = "Have your mic ready to record your sound, then press the record button. ";
             newMicIdDialog.Message = "What is the name of this sound?";
             newMicIdDialog.OkText = "NEXT";
             newMicIdDialog.CancelText = "CANCEL";
@@ -324,20 +317,6 @@ namespace Wavio.Activities
         private void AddNewSoundRequest(string soundName)
         {
 
-            /*
-            try
-            {
-                base.RunOnUiThread(() =>
-                {
-                    progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Sending new sound request...", true);
-                });                
-            }
-            catch (Exception e)
-            {
-                string s = e.ToString();
-                //Acr.UserDialogs.UserDialogs.Instance.Progress("Please wait...");
-            }
-            */
             Acr.UserDialogs.UserDialogs.Instance.Loading("Sending request...");
 
             string hwid = Android.OS.Build.Serial;
@@ -349,10 +328,7 @@ namespace Wavio.Activities
             var newSound = new MicSound();
             newSound.sound_name = soundName;
             newSound.sound_image = "http://jmprog.com/hzinnovations/icons/pulse2.png";
-            newSound.sound_settings = new Dictionary<string, string>();
-            newSound.sound_settings.Add("Push", true.ToString());
-            newSound.sound_settings.Add("ShowMessage", false.ToString());
-            newSound.sound_settings.Add("Vibrate", true.ToString());
+            newSound.sound_settings = SoundsManager.NewSoundSettings();
 
             try
             {
@@ -387,51 +363,28 @@ namespace Wavio.Activities
 
                     if (serverResponse == null)
                     {
-
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Network error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
-                        //Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
+                        //Acr.UserDialogs.UserDialogs.Instance.ShowError("Unknown error!");
                         return;
                     }
 
 
                     if (serverResponse.error == Shared.ServerResponsecode.OK)
                     {
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
-
-                        //progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Initializing mic...", true);
+                        Acr.UserDialogs.UserDialogs.Instance.Loading("Initializing mic...", RecordCanceled);
                         
-                        //Acr.UserDialogs.UserDialogs.Instance.Loading("Initializing mic...", RecordCanceled);
-
-                        //todo: fix
-                        Acr.UserDialogs.UserDialogs.Instance.Loading("RECORDING, Play your sound!");
-
                         awaitingResponse = ExpectedResponse.NowRecording;
-
                     }
                     else if (serverResponse.error == Shared.ServerResponsecode.DATABASE_ERROR)
                     {
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Server error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Server error!");
                     }
                     else
                     {
                         if (serverResponse.request != Shared.RequestCode.RECORD_NEW_SOUND)
                         {
-                            if (progressDialog != null)
-                                progressDialog.Dismiss();
-                            //AndHUD.Shared.ShowError(_context, "Request type mismatch!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                             Acr.UserDialogs.UserDialogs.Instance.ShowError("Request type mismatch!");
                             return;
                         }
-                        if (progressDialog != null)
-                            progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Unknown error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Unknown error!");
                     }
                     return;
@@ -444,7 +397,6 @@ namespace Wavio.Activities
                 string _exception = ex.ToString();
                 if (progressDialog != null)
                     progressDialog.Dismiss();
-                //AndHUD.Shared.ShowError(_context, "Error: " + ex.ToString(), AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                 Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                 Console.WriteLine("--->" + _exception);
             }
@@ -508,7 +460,7 @@ namespace Wavio.Activities
                     if (serverResponse == null)
                     {
 
-                        loading.Hide();
+                        //loading.Hide();
                         //AndHUD.Shared.ShowError(_context, "Network error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         //Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                         return;
@@ -520,7 +472,15 @@ namespace Wavio.Activities
                         loading.Hide();
                         //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
 
-                        sounds = JsonConvert.DeserializeObject<List<MicSound>>(serverResponse.data);
+                        try
+                        {
+                            sounds = JsonConvert.DeserializeObject<List<MicSound>>(serverResponse.data);
+                        }
+                        catch
+                        {
+                            Acr.UserDialogs.UserDialogs.Instance.ShowError("Parsing error!");
+                        }
+                        
                         if (sounds == null)
                             sounds = new List<MicSound>();
                         UpdateList(sounds);
@@ -580,5 +540,7 @@ namespace Wavio.Activities
             //listView.ScrollListBy(1);
             //listView.SmoothScrollBy(100, 1000);
         }
+
+        
     }
 }

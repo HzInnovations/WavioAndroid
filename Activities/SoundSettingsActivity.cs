@@ -37,8 +37,7 @@ namespace Wavio.Activities
             sound = JsonConvert.DeserializeObject<MicSound>(Intent.GetStringExtra("sound"));
 
             //string micName = MicsManager.GetMicsFromPreferences().FirstOrDefault(e => e.WavioId == micId).Name;
-
-
+            
 
             SetContentView(Resource.Layout.page_settings);
 
@@ -48,7 +47,7 @@ namespace Wavio.Activities
 
             toolbar.Title = sound.sound_name;
 
-            SoundSettingsFragment fragment = new SoundSettingsFragment(micId, sound);
+            SoundSettingsFragment fragment = new SoundSettingsFragment(micId, sound, this);
 
             SupportFragmentManager.BeginTransaction()
                     .Replace(Resource.Id.content_frame, fragment)                    

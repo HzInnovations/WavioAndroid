@@ -30,6 +30,13 @@ namespace Wavio.Helpers
             public static string NOTIFS_SINCE = "notifs_since";//get all notifications since this time. Should be time since epoch as an int.
         }
 
+        public class QueuedDeviceRequestType
+        {
+            public static string NEW_SOUND = "new_sound";
+            public static string DELETE_SOUND = "delete_sound";
+            public static string CHANGE_SENSITIVITY = "change_sensitivity";
+        }
+
         public class RequestCode
         {
             public static int GET_LAST_ALIVE = 201;

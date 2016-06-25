@@ -110,6 +110,11 @@ namespace Wavio.Activities
                         {
                             editor.PutString("LastDate", dtnow.ToString());
                             editor.Apply();
+
+                            var activity2 = new Intent(this, typeof(HomeView));                            
+                            activity2.SetFlags(ActivityFlags.FromBackground);
+                            activity2.SetFlags(ActivityFlags.NewTask);
+                            StartActivity(activity2);
                         }
                         else
                         {
@@ -125,6 +130,7 @@ namespace Wavio.Activities
                 {
                     var registrationComplete = new Intent("reply_error");
                     registrationComplete.PutExtra("reply_error", reply_error);
+                    registrationComplete.PutExtra("reply_data", reply_data);
                     LocalBroadcastManager.GetInstance(this).SendBroadcast(registrationComplete);
                 }
 
