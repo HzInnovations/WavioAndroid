@@ -170,7 +170,7 @@ namespace Wavio.Fragments
 
         private void changeIcon(object sender, Preference.PreferenceClickEventArgs e)
         {
-
+            parent.GoToIconSelect();
         }
 
         private void deleteSound(object sender, Preference.PreferenceClickEventArgs e)

@@ -28,6 +28,7 @@ namespace Wavio.Helpers
             public static string SOUND_NAME = "sound_name";
             public static string SHARED_SETTINGS = "shared_settings";
             public static string NOTIFS_SINCE = "notifs_since";//get all notifications since this time. Should be time since epoch as an int.
+            public static string FEEDBACK = "feedback";
         }
 
         public class QueuedDeviceRequestType
@@ -53,6 +54,8 @@ namespace Wavio.Helpers
             public static int UNREGISTER_MIC = 211;
 
             public static int REQUEST_TEST_NOTIF = 212;
+            public static int GET_QUESTION_LIST = 213;
+            public static int SUBMIT_FEEDBACK = 214;
         }
         public class ServerResponsecode
         {

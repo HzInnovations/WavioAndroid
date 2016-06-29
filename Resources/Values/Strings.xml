@@ -32,7 +32,7 @@
   <string name="discoverable">Make discoverable</string>
 
   <!-- Preference Screen -->
-  <string name="notif_layout">Notification list style</string>
+  <string name="notif_layout">Notification List Style</string>
   <string name="notif_dialog_title">How should notifications be displayed</string>
 
   <string-array name="notif_layout_types">

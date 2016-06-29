@@ -13,6 +13,11 @@ using System;
 using Wavio.Helpers;
 using Android.Preferences;
 using Android.Support.V4.Content;
+using System.Collections.Generic;
+using RestSharp;
+using Newtonsoft.Json;
+using static Wavio.Helpers.Shared;
+using System.Net;
 
 //using UniversalImageLoader.Core;
 
@@ -107,10 +112,10 @@ namespace Wavio.Activities
                 case Resource.Id.nav_settings:
                     ListItemClicked(3);
                     break;
-                case Resource.Id.nav_feedback:
+                case Resource.Id.nav_help:
                     ListItemClicked(4);
                     break;
-                case Resource.Id.nav_help:
+                case Resource.Id.nav_feedback:
                     ListItemClicked(5);
                     break;
                 }				
@@ -150,15 +155,16 @@ namespace Wavio.Activities
                 StartActivity(intent);
                 break;
 			case 2:
-                var intent3 = new Intent(this, typeof(BluetoothActivity));
-                StartActivity(intent3);
+                var intent2 = new Intent(this, typeof(BluetoothActivity));
+                StartActivity(intent2);
                 break;
             case 3:                
-                var intent2 = new Intent(this, typeof(SettingsActivity));
-                StartActivity(intent2);                
+                var intent3 = new Intent(this, typeof(SettingsActivity));
+                StartActivity(intent3);                
                 break;
             case 4:
-                //GetFeedback();
+                var intent4 = new Intent(this, typeof(HelpActivity));
+                StartActivity(intent4);
                 break;
             case 5:
                 GetFeedback();
@@ -189,11 +195,7 @@ namespace Wavio.Activities
 
 	    private void GetFeedback()
         {
-            //int fragmentCount = SupportFragmentManager.Fragments.Count;
-            //var s = SupportFragmentManager.Fragments[0];
-            //var s2 = SupportFragmentManager.Fragments[0].GetType();
-            //var same = SupportFragmentManager.Fragments[0].GetType() == typeof(TabbedNotifsFragment);
-            //AndroidHUD.AndHUD.Shared.Show(this, s);
+            FeedbackDialog();
         }
 
 		public override bool OnOptionsItemSelected (IMenuItem item)
@@ -206,6 +208,93 @@ namespace Wavio.Activities
 			}
 			return base.OnOptionsItemSelected (item);
 		}
-	}
+
+        async void FeedbackDialog()
+        {
+            var feedbackDialog = new PromptConfig();
+            feedbackDialog.SetInputMode(InputType.Default);
+            feedbackDialog.Title = "Submit feedback.";
+            feedbackDialog.OkText = "Submit";
+            feedbackDialog.CancelText = "Cancel";
+            feedbackDialog.Placeholder = "Questions, Comments";
+            var feedbackResponse = await UserDialogs.Instance.PromptAsync(feedbackDialog);
+            if (feedbackResponse.Ok)
+            {
+                RequestSendFeedback(feedbackResponse.Text);
+            }
+        }
+
+        private void RequestSendFeedback(string feedback)
+        {
+            var loading = Acr.UserDialogs.UserDialogs.Instance.Loading("Sending Feedback...");
+
+            string hwid = Android.OS.Build.Serial;
+
+            var SharedSettings = new Dictionary<String, String>();
+            var prefs = PreferenceManager.GetDefaultSharedPreferences(Android.App.Application.Context);
+            ISharedPreferencesEditor editor = prefs.Edit();
+            String gcmID = prefs.GetString("GCMID", "");
+
+            try
+            {
+
+                var client = new RestClient(Shared.SERVERURL);
+                var request = new RestRequest("resource/{id}", Method.POST);
+                var parameters = new Dictionary<string, string>();
+
+                parameters.Add(Shared.ParamType.REQUEST_CODE, Shared.RequestCode.SUBMIT_FEEDBACK.ToString());
+                parameters.Add(Shared.ParamType.GCM_ID, gcmID);
+                parameters.Add(Shared.ParamType.HWID, hwid);
+
+                parameters.Add(Shared.ParamType.FEEDBACK, feedback);
+
+                string requestJson = JsonConvert.SerializeObject(parameters);
+                request.AddParameter(Shared.ParamType.REQUEST, requestJson);
+
+                Console.WriteLine("Waiting for response");
+
+
+                client.ExecuteAsync(request, response => {
+
+                    ServerResponse serverResponse = JsonConvert.DeserializeObject<ServerResponse>(response.Content);
+
+                    if (serverResponse == null)
+                    {
+                        Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
+                        return;
+                    }
+
+                    if (serverResponse.error == Shared.ServerResponsecode.OK)
+                    {
+                        Acr.UserDialogs.UserDialogs.Instance.ShowSuccess("Thank you for your feedback!");
+                    }
+
+                    else if (serverResponse.error == Shared.ServerResponsecode.DATABASE_ERROR)
+                    {
+                        Acr.UserDialogs.UserDialogs.Instance.ShowError("Server error!");
+                    }
+                    else
+                    {
+                        if (serverResponse.request != Shared.RequestCode.SUBMIT_FEEDBACK)
+                        {
+                            Acr.UserDialogs.UserDialogs.Instance.ShowError("Request type mismatch!");
+                            return;
+                        }
+                        Acr.UserDialogs.UserDialogs.Instance.ShowError("Unknown error!");
+                    }
+                    Acr.UserDialogs.UserDialogs.Instance.HideLoading();
+                    return;
+
+                });
+
+            }
+            catch (WebException ex)
+            {
+                string _exception = ex.ToString();
+                Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
+                Console.WriteLine("--->" + _exception);
+            }
+        }
+    }
 }
 

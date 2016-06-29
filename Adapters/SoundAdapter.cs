@@ -12,6 +12,7 @@ using Android.Widget;
 using Java.Lang;
 using Wavio.Models;
 using Android.Graphics.Drawables;
+using Com.Nostra13.Universalimageloader.Core;
 
 namespace Wavio.Adapters
 {
@@ -20,9 +21,13 @@ namespace Wavio.Adapters
         Activity context;
         List<MicSound> sounds;
 
+        public ImageLoader ImageLoader { get; set; }
+
         public SoundAdapter(Activity _context, List<MicSound> _list)
             : base()
         {
+
+            ImageLoader = ImageLoader.Instance;
             this.context = _context;
             this.sounds = _list;
         }
@@ -55,7 +60,9 @@ namespace Wavio.Adapters
             MicSound item = this[position];
             view.FindViewById<TextView>(Resource.Id.soundNameText).Text = item.sound_name;
             //view.FindViewById<TextView>(Resource.Id.micIdText).Text = item.WavioId;
+            var imageView = view.FindViewById<Helpers.SquareImageView>(Resource.Id.item_image);
 
+            ImageLoader.DisplayImage(item.sound_image, imageView);
             /*
             using (var imageView = view.FindViewById<ImageView>(Resource.Id.Thumbnail))
             {

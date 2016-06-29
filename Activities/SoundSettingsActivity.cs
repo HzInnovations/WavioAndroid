@@ -25,15 +25,15 @@ namespace Wavio.Activities
     {
 
         private MicSound sound;
-        string micID;
+        string micId;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            
             //string micId = savedInstanceState.GetString("mic_id");
             //string micId = base.GetString("mic_id");
-            string micId = Intent.GetStringExtra("mic_id");
+            micId = Intent.GetStringExtra("mic_id");
             sound = JsonConvert.DeserializeObject<MicSound>(Intent.GetStringExtra("sound"));
 
             //string micName = MicsManager.GetMicsFromPreferences().FirstOrDefault(e => e.WavioId == micId).Name;
@@ -65,6 +65,20 @@ namespace Wavio.Activities
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        public void GoToIconSelect()
+        {
+            PickIconFragment fragment = new PickIconFragment(sound, micId);
+            fragment.parent = this;
+
+            SupportFragmentManager.BeginTransaction()
+                    .Replace(Resource.Id.content_frame, fragment)
+                    .Commit();
+        }
+        public void NavigateUp()
+        {
+            NavUtils.NavigateUpFromSameTask(this);
         }
     }
 }

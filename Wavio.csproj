@@ -169,11 +169,14 @@
     <Compile Include="Activities\MicsActivity.cs" />
     <Compile Include="Activities\FriendActivity.cs" />
     <Compile Include="Activities\HomeActivity.cs" />
+    <Compile Include="Activities\HelpActivity.cs" />
     <Compile Include="Activities\SoundSettingsActivity.cs" />
     <Compile Include="Activities\MicSoundsActivity.cs" />
     <Compile Include="Activities\RegistrationIntentService.cs" />
     <Compile Include="Activities\MicSettingsActivity.cs" />
     <Compile Include="Activities\SettingsActivity.cs" />
+    <Compile Include="Adapters\IconAdapter.cs" />
+    <Compile Include="Adapters\QuestionAdapter.cs" />
     <Compile Include="Adapters\SoundAdapter.cs" />
     <Compile Include="Adapters\MicAdapter.cs" />
     <Compile Include="Adapters\NotifAdapter.cs" />
@@ -181,6 +184,8 @@
     <Compile Include="Adapters\FriendsAdapter.cs" />
     <Compile Include="Adapters\MonkeyAdapter.cs" />
     <Compile Include="Adapters\Util.cs" />
+    <Compile Include="Fragments\HelpFragment.cs" />
+    <Compile Include="Fragments\PickIconFragment.cs" />
     <Compile Include="Fragments\BrowseFragment.cs" />
     <Compile Include="Fragments\SoundSettingsFragment.cs" />
     <Compile Include="Fragments\NotifsFragment.cs" />
@@ -195,7 +200,9 @@
     <Compile Include="Helpers\SoundsManager.cs" />
     <Compile Include="Helpers\SquareImageView.cs" />
     <Compile Include="Helpers\MicsManager.cs" />
+    <Compile Include="Models\Question.cs" />
     <Compile Include="Models\MicSound.cs" />
+    <Compile Include="Models\Icon.cs" />
     <Compile Include="Models\SavedMic.cs" />
     <Compile Include="Models\Notif.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -259,6 +266,10 @@
     <AndroidResource Include="Resources\Layout\page_sounds.axml" />
     <AndroidResource Include="Resources\Layout\item_sound.axml" />
     <AndroidResource Include="Resources\Layout\page_home_noheader.axml" />
+    <AndroidResource Include="Resources\Layout\item_icon.axml" />
+    <AndroidResource Include="Resources\Layout\fragment_icons.axml" />
+    <AndroidResource Include="Resources\Layout\item_question.axml" />
+    <AndroidResource Include="Resources\Layout\fragment_help.axml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml">

@@ -252,6 +252,12 @@ namespace Wavio.Activities
                             progressDialog.Dismiss();
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Server error!");
                     }
+                    else if (serverResponse.error == Shared.ServerResponsecode.NO_SUCH_DEVICE)
+                    {
+                        if (progressDialog != null)
+                            progressDialog.Dismiss();
+                        Acr.UserDialogs.UserDialogs.Instance.ShowError("Device has never been online!");
+                    }
                     else
                     {
                         if (serverResponse.request != Shared.RequestCode.GET_LAST_ALIVE)
