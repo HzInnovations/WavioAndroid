@@ -47,7 +47,16 @@ namespace Wavio.Activities
             base.OnCreate (savedInstanceState);
             var config = ImageLoaderConfiguration.CreateDefault(ApplicationContext);
             // Initialize ImageLoader with configuration.
-            ImageLoader.Instance.Init(config);
+            //ImageLoader.Instance.Init(config);
+
+            DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .CacheInMemory(true)
+                .CacheOnDisk(true)
+                .Build();
+            ImageLoaderConfiguration newConfig = new ImageLoaderConfiguration.Builder(ApplicationContext)
+                .DefaultDisplayImageOptions(defaultOptions)
+                .Build();
+            ImageLoader.Instance.Init(newConfig);
 
             UserDialogs.Init(this);
             MicsManager.instance = new MicsManager();
@@ -111,8 +120,11 @@ namespace Wavio.Activities
             };
 
 			//if first time you will want to go ahead and click first item.
-			if (savedInstanceState == null) {
-				ListItemClicked (-1);
+			if (savedInstanceState == null)
+            {
+                //SupportActionBar.SetWindowTitle("Notifications");
+
+                ListItemClicked (-1);
 			}
 		}
         

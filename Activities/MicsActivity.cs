@@ -68,7 +68,7 @@ namespace Wavio.Activities
                     if (waitingForGCM)
                     {
                         waitingForGCM = false;
-                        SubmitNewMic();
+                        RequestAddMic();
                     }
                 }
                 
@@ -172,7 +172,7 @@ namespace Wavio.Activities
             }
             else
             {
-                SubmitNewMic();
+                RequestAddMic();
                 //RegisterGCMID();
             }
         }
@@ -189,21 +189,13 @@ namespace Wavio.Activities
             }
         }
 
-        public void SubmitNewMic()
+        public void RequestAddMic()
         {
-            try
-            {
-                //progressDialog = Android.App.ProgressDialog.Show(this, "Please wait...", "Registering mic...", true);
-            }
-            catch
-            {
-                //Acr.UserDialogs.UserDialogs.Instance.Progress("Please wait...");
-            }
+          
             var progress = Acr.UserDialogs.UserDialogs.Instance.Progress("Registering mic...");
 
             string hwid = Android.OS.Build.Serial;
 
-            //AndHUD.Shared.Show(_context, "Adding Mic...", (int)AndroidHUD.MaskType.Clear);
             var SharedSettings = new Dictionary<String, String>();
             var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
             ISharedPreferencesEditor editor = prefs.Edit();
@@ -218,7 +210,6 @@ namespace Wavio.Activities
                     if (progressDialog != null)
                         progressDialog.Dismiss();
                     Acr.UserDialogs.UserDialogs.Instance.ErrorToast("Error: No ID given!");
-                    //AndHUD.Shared.ShowError(_context, "Error: No ID given!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                     return;
                 }
                 if (string.IsNullOrEmpty(gcmID))
@@ -226,7 +217,6 @@ namespace Wavio.Activities
                     if (progressDialog != null)
                         progressDialog.Dismiss();
                     Acr.UserDialogs.UserDialogs.Instance.ErrorToast("Error: No GCM ID!");
-                    //AndHUD.Shared.ShowError(_context, "Error: No GCM ID!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                     return;
                 }
 
@@ -252,7 +242,6 @@ namespace Wavio.Activities
                     {
                         if (progressDialog != null)
                             progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Network error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                         return;
                     }
@@ -262,14 +251,12 @@ namespace Wavio.Activities
                     if (serverResponse.error == Shared.ServerResponsecode.OK)
                     {
                         if (progressDialog != null)
-                            progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowSuccess(_context, "Added!", AndroidHUD.MaskType.Clear, TimeSpan.FromSeconds(2));                        
+                            progressDialog.Dismiss();                   
                         var saveSuccess = MicsManager.AddMicToPreferences(wavioId, wavioName);
                         if (saveSuccess)
                         {
 
                         }
-                        //Acr.UserDialogs.UserDialogs.Instance.ShowSuccess("Added!");
                         editor.PutBoolean("settings_changed", true);
 
                         editor.PutBoolean("mic_added", true);
@@ -282,7 +269,6 @@ namespace Wavio.Activities
                     {
                         if (progressDialog != null)
                             progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Server error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Server error!");
                     }
                     else
@@ -291,13 +277,11 @@ namespace Wavio.Activities
                         {
                             if (progressDialog != null)
                                 progressDialog.Dismiss();
-                            //AndHUD.Shared.ShowError(_context, "Request type mismatch!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                             Acr.UserDialogs.UserDialogs.Instance.ShowError("Request type mismatch!");
                             return;
                         }
                         if (progressDialog != null)
                             progressDialog.Dismiss();
-                        //AndHUD.Shared.ShowError(_context, "Unknown error!", AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                         Acr.UserDialogs.UserDialogs.Instance.ShowError("Unknown error!");
                     }
                     return;
@@ -310,7 +294,6 @@ namespace Wavio.Activities
                 string _exception = ex.ToString();
                 if (progressDialog != null)
                     progressDialog.Dismiss();
-                //AndHUD.Shared.ShowError(_context, "Error: " + ex.ToString(), AndroidHUD.MaskType.Black, TimeSpan.FromSeconds(2));
                 Acr.UserDialogs.UserDialogs.Instance.ShowError("Network error!");
                 Console.WriteLine("--->" + _exception);
             }

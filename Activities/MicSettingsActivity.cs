@@ -41,11 +41,15 @@ namespace Wavio.Activities
 
             toolbar.Title = micName;
 
-            MicSettingsFragment fragment = new MicSettingsFragment(micId);
+            MicSettingsFragment fragment = new MicSettingsFragment(micId, this);
 
             SupportFragmentManager.BeginTransaction()
                     .Replace(Resource.Id.content_frame, fragment)                    
                     .Commit();
+        }
+        public void NavigateUp()
+        {
+            NavUtils.NavigateUpFromSameTask(this);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

@@ -92,7 +92,7 @@ namespace Wavio.Fragments
                 if (!updatingNotifs)
                 {
                     updatingNotifs = true;
-                    UpdateNotifs();
+                    RequestUpdateNotifs();
                 }
 
             }
@@ -102,11 +102,16 @@ namespace Wavio.Fragments
             {
                 if (micId != "All")
                 {
-                    UpdateNotifs();
+                    RequestUpdateNotifs();
                 }     
                 else
                 {
                     adapter.UpdateNotifs(NotifsManager.GetSavedNotifications(micId));
+
+                    home.RunOnUiThread(() =>
+                    {
+                        adapter.NotifyDataSetChanged();
+                    });
 
                     int index = gridView.FirstVisiblePosition;
                     gridView.SmoothScrollToPosition(index);
@@ -138,7 +143,7 @@ namespace Wavio.Fragments
                 if (!updatingNotifs)
                 {
                     updatingNotifs = true;
-                    UpdateNotifs();
+                    RequestUpdateNotifs();
                 }
             }
             else
@@ -232,7 +237,7 @@ namespace Wavio.Fragments
         }
 
 
-        private void UpdateNotifs()
+        private void RequestUpdateNotifs()
         {
             MicsManager.instance.micsUpdating++;
             MicsManager.instance.updatesQueued = true;
@@ -306,13 +311,19 @@ namespace Wavio.Fragments
 
                     if (true || notifs.Count > 0)
                     {
-                        adapter.UpdateNotifs(NotifsManager.GetSavedNotifications(micId));
+                        var allNotifs = NotifsManager.GetSavedNotifications(micId);
+                        adapter.UpdateNotifs(allNotifs);
                         //gridView.SetSelection(0);
                         //gridView.SmoothScrollToPosition(0);
                         int index = gridView.FirstVisiblePosition;
                         gridView.SmoothScrollToPosition(index);
                         gridView.SmoothScrollToPosition(0);
-                        gridView.SmoothScrollBy(1, 5);
+                        gridView.SmoothScrollBy(1, 500);
+
+                        home.RunOnUiThread(() =>
+                        {
+                            adapter.NotifyDataSetChanged();
+                        });
                     }
 
                     int i = MicsManager.instance.micsUpdating;

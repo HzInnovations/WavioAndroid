@@ -175,7 +175,7 @@ namespace Wavio.Fragments
 
         private void deleteSound(object sender, Preference.PreferenceClickEventArgs e)
         {
-            CheckMicOnline(PostMicCheck.DeleteSound);
+            RequestCheckMicOnline(PostMicCheck.DeleteSound);
         }
 
         private void RequestDeleteSound()
@@ -360,7 +360,7 @@ namespace Wavio.Fragments
             }
         }
 
-        private void CheckMicOnline(PostMicCheck post)
+        private void RequestCheckMicOnline(PostMicCheck post)
         {
             Acr.UserDialogs.UserDialogs.Instance.Loading("Checking mic status...");
 

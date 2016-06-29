@@ -84,6 +84,32 @@ namespace Wavio.Helpers
             //ViewModel.GoToEditWavio();
             return true;
         }
+        public static bool RemoveMicFromPreferences(string WavioID)
+        {
+            var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
+            ISharedPreferencesEditor editor = prefs.Edit();
+            
+
+            string storedWaviosJson = prefs.GetString("SavedMics", null);
+            var storedWavios = new List<SavedMic>();
+
+            if (!string.IsNullOrEmpty(storedWaviosJson))
+            {
+                storedWavios = JsonConvert.DeserializeObject<List<SavedMic>>(storedWaviosJson);
+            }
+
+            storedWavios.RemoveAll(e => e.WavioId == WavioID);
+
+            string json = JsonConvert.SerializeObject(storedWavios);
+            editor.PutString("SavedMics", json);
+            editor.Apply();
+
+            //AndHUD.Shared.Dismiss();
+
+            //ViewModel.SelectedItem = newMic;
+            //ViewModel.GoToEditWavio();
+            return true;
+        }
 
     }
 }

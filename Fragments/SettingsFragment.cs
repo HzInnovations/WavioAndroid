@@ -48,13 +48,13 @@ namespace Wavio.Fragments
             instanceButton.PreferenceClick += makeInstance;
 
             testNotifButton = FindPreference("button_test_notif") as Android.Support.V7.Preferences.PreferenceScreen;
-            testNotifButton.PreferenceClick += testNotif;
+            testNotifButton.PreferenceClick += RequestTestNotif;
 
             //testButton1 = FindPreference("button_test1") as Android.Support.V7.Preferences.PreferenceScreen;
             //testButton1.PreferenceClick += runTestButton1;
         }
 
-        private void testNotif(object sender, Preference.PreferenceClickEventArgs e)
+        private void RequestTestNotif(object sender, Preference.PreferenceClickEventArgs e)
         {
             base.Context.SendBroadcast(new Intent("com.google.android.intent.action.GTALK_HEARTBEAT"));
             base.Context.SendBroadcast(new Intent("com.google.android.intent.action.MCS_HEARTBEAT"));

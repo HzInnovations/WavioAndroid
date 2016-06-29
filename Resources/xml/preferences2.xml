@@ -60,7 +60,7 @@
                          android:summary="How long, in milliseconds, until a mic is considered offline."
                          android:inputType="number"
                          android:dialogTitle="Enter a new time in milliseconds. i.e. 5000 ms = 5 seconds."
-                         android:defaultValue="5000"/>
+                         android:defaultValue="10000"/>
   </android.support.v7.preference.PreferenceCategory>
   
   

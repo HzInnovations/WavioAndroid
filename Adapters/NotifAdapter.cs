@@ -38,6 +38,7 @@ namespace Wavio.Adapters
             this.notifs = Notifs;
             OrganizeNotifs();
             ImageLoader = ImageLoader.Instance;
+            
 
             var prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
             relativeTime = prefs.GetBoolean("notif_time_format", false);

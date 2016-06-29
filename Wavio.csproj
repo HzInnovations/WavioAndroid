@@ -81,6 +81,14 @@
       <HintPath>packages\AndHUD.1.2.0\lib\MonoAndroid\AndHUD.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.FFImageLoading.2.1.6-pre-109\lib\MonoAndroid10\FFImageLoading.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Xamarin.FFImageLoading.2.1.6-pre-109\lib\MonoAndroid10\FFImageLoading.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
@@ -182,7 +190,6 @@
     <Compile Include="Fragments\TabbedNotifsFragment.cs" />
     <Compile Include="Fragments\FriendsRecentFragment.cs" />
     <Compile Include="Fragments\FriendsFragment.cs" />
-    <Compile Include="Fragments\ProfileFragment.cs" />
     <Compile Include="Helpers\NotifsManager.cs" />
     <Compile Include="Helpers\Shared.cs" />
     <Compile Include="Helpers\SoundsManager.cs" />

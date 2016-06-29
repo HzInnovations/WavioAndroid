@@ -54,7 +54,8 @@ namespace Wavio.Activities
         {
             AddSound,
             EditSound,
-            DeleteSound
+            DeleteSound,
+            ChangeSensitivity
         };
 
 
