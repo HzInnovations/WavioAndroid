@@ -3,6 +3,8 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
   <android.support.v7.preference.PreferenceCategory android:title="Mic Settings">
+    
+    <!--
    <android.support.v7.preference.PreferenceScreen android:key="preference_mic_button_sounds"
                       android:title="Add or Update Sounds"
                       android:summary="Record, edit, or delete the sounds this microphone recognizes.">
@@ -12,6 +14,8 @@
                       android:title="Sensitivity"
                       android:summary="Change the sound detection sensitivity.">
     </android.support.v7.preference.PreferenceScreen>
+    
+    -->
         
     <android.support.v7.preference.PreferenceScreen android:key="preference_mic_button_restore"
                       android:title="Restore all nofitications"

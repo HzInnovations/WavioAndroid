@@ -65,10 +65,13 @@ namespace Wavio.Fragments
             editor.PutString("edit_mic_id", micId);
             editor.Apply();
 
-            clearPreferencesButton = FindPreference("preference_mic_button_sounds") as Android.Support.V7.Preferences.PreferenceScreen;
-            clearPreferencesButton.PreferenceClick += micSounds;
-            changeSensitivityButton = FindPreference("preference_mic_button_sensitivity") as Android.Support.V7.Preferences.PreferenceScreen;
-            changeSensitivityButton.PreferenceClick += setSensitivity;
+            //clearPreferencesButton = FindPreference("preference_mic_button_sounds") as Android.Support.V7.Preferences.PreferenceScreen;
+            //clearPreferencesButton.PreferenceClick += micSounds;  
+
+            //changeSensitivityButton = FindPreference("preference_mic_button_sensitivity") as Android.Support.V7.Preferences.PreferenceScreen;
+            //changeSensitivityButton.PreferenceClick += setSensitivity;
+
+            
             restoreNotificationsButton = FindPreference("preference_mic_button_restore") as Android.Support.V7.Preferences.PreferenceScreen;
             restoreNotificationsButton.PreferenceClick += restoreNotifications;
             deleteMicButton = FindPreference("preference_mic_button_delete") as Android.Support.V7.Preferences.PreferenceScreen;
